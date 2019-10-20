@@ -7,6 +7,15 @@ return [
             dirname(__DIR__) . '/view',
         ],
     ],
+    'file_renderers' => [
+        'invokables' => [
+            'verovio' => Media\FileRenderer\Verovio::class,
+        ],
+        'aliases' => [
+            'application/vnd.mei+xml' => 'verovio',
+            'mei' => 'verovio',
+        ],
+    ],
     'translator' => [
         'translation_file_patterns' => [
             [

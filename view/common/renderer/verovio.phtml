@@ -1,0 +1,25 @@
+<?php
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @var \Omeka\Api\Representation\MediaRepresentation $media
+ * @var array $options
+ */
+
+$translate = $this->plugin('translate');
+$assetUrl = $this->plugin('assetUrl');
+
+$this->headScript()
+    // ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
+    ->appendFile($assetUrl('vendor/rism-ch/verovio/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('js/verovio.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+;
+?>
+
+<div id="verovio" class="verovio" data-url="<?= $media->originalUrl() ?>" <?= $options['attributes'] ?>><?= $translate('The viewer is loading…') ?></div>
+<noscript>
+    <p>
+        <?= $this->escapeHtml($translate('This browser does not support javascript.')) ?>
+        <?= sprintf($translate('You may %sdownload it%s to view it offline.'), '<a href="' . $media->originalUrl() . '">', '</a>') ?>
+        <img src="<?= $media->thumbnailUrl('large') ?>" height="600px"/>
+    </p>
+</noscript>

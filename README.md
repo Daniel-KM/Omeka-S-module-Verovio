@@ -37,6 +37,25 @@ The next times:
 Then install it like any other Omeka module.
 
 
+Usage
+-----
+
+### Identification of xml mei files
+
+Because mei files are xml files, they are not automatically recognized by Omeka.
+To identify them, there are two solutions: use the file extension `.mei` or
+install the module [Next], that identify the xml-mei files with the unregistered
+ vendor media type `application/vnd.mei+xml`.
+
+The white lists of media types and extensions are automatically updated to
+allow to upload xml files, with the extension and media type above.
+
+### Display of MEI files
+
+When a file has extension `.mei` or media type `application/vnd.mei+xml`, it is
+automatically displayed anywhere, in public site or in admin board.
+
+
 Warning
 -------
 
@@ -98,6 +117,7 @@ University of Applied Sciences and Arts, Basel Academy of Music, Academy of Musi
 [XML-MEI]: https://music-encoding.org
 [Omeka S]: https://omeka.org/s
 [`Verovio.zip`]: https://github.com/Daniel-KM/Omeka-S-module-Verovio/releases
+[Next]: https://github.com/Daniel-KM/Omeka-S-module-Next
 [module issues]: https://github.com/Daniel-KM/Omeka-S-module-Verovio/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
