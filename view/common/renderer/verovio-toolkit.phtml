@@ -8,13 +8,14 @@
 $translate = $this->plugin('translate');
 $assetUrl = $this->plugin('assetUrl');
 
-$baseUrl = $this->serverUrl() . $assetUrl('vendor/rism-ch/verovio/', 'Verovio', false, false);
 $this->headScript()
-    ->appendFile($assetUrl('js/verovio.js', 'Verovio'), 'module')
+    // ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
+    ->appendFile($assetUrl('vendor/rism-ch/verovio/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('js/verovio-tk.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
 ;
 ?>
 
-<div id="verovio" class="verovio" data-base-url="<?= $baseUrl ?>" data-url="<?= $media->originalUrl() ?>" <?= $options['attributes'] ?>><?= $translate('The viewer is loading…') ?></div>
+<div id="verovio" class="verovio" data-url="<?= $media->originalUrl() ?>" <?= $options['attributes'] ?>><?= $translate('The viewer is loading…') ?></div>
 <noscript>
     <p>
         <?= $this->escapeHtml($translate('This browser does not support javascript.')) ?>

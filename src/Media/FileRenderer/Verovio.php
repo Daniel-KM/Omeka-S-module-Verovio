@@ -8,6 +8,11 @@ use Zend\View\Renderer\PhpRenderer;
 class Verovio implements RendererInterface
 {
     /**
+     * The default partial view script.
+     */
+    const PARTIAL_NAME = 'common/renderer/verovio';
+
+    /**
      * These options are used only when the player is called outside of a site
      * or when the site settings are not set.
      *
@@ -23,11 +28,13 @@ class Verovio implements RendererInterface
      * @param PhpRenderer $view,
      * @param MediaRepresentation $media
      * @param array $options These options are managed for sites:
+     *   - template: the partial to use
      *   - attributes: set the attributes to add
      * @return string
      */
     public function render(PhpRenderer $view, MediaRepresentation $media, array $options = [])
     {
+        // Omeka 1.2.0 doesn't support $view->status().
         $isAdmin = $view->params()->fromRoute('__ADMIN__');
         if ($isAdmin) {
             $options['attributes'] = $this->defaultOptions['attributes'];
@@ -37,7 +44,9 @@ class Verovio implements RendererInterface
                 : $view->siteSetting('verovio_attributes', $this->defaultOptions['attributes']);
         }
 
-        return $view->partial('common/renderer/verovio', [
+        $template = isset($options['template']) ? $options['template'] : self::PARTIAL_NAME;
+        unset($options['template']);
+        return $view->partial($template, [
             'media' => $media,
             'options' => $options,
         ]);

@@ -1,4 +1,6 @@
-/* Vanilla js (defered js). */
+/* Vanilla js (module). */
+
+import '../vendor/rism-ch/verovio/verovio-app.js';
 
 var verovioId = 'verovio';
 var verovioDiv = document.getElementById(verovioId);
@@ -7,39 +9,18 @@ if (typeof file === 'undefined') {
     file = new URLSearchParams(window.location.search).get('mei-url');
 }
 if (file) {
-    var request = new XMLHttpRequest();
-    request.open('GET', file, true);
-    request.onreadystatechange = function () {
-        if (request.readyState != 4 || request.status != 200) {
-            return;
-        }
-        var verovioToolkit = new verovio.toolkit();
-        verovioDiv.innerHTML = verovioToolkit.renderData(request.responseText, {});
-    };
-    request.send();
-}
-
-/* jQuery. */
-/*
-$(document).ready(function() {
-
-    var verovioId = '#verovio';
-    var verovioDiv = $(verovioId)
-    var file = verovioDiv.data('url');
-    if (typeof file === 'undefined') {
-        file = new URLSearchParams(window.location.search).get('mei-url');
+    const options = {
+        defaultView: 'responsive', // default is 'responsive', alternative is 'document'
+        defaultZoom: 2, // 0-7, default is 4
+        enableResponsive: true, // default is true
+        enableDocument: true // default is true
     }
-    if (file) {
-        $.ajax({
-            url: file,
-            dataType: 'text',
-            success: function(data) {
-                var verovioToolkit = new verovio.toolkit();
-                var svg = verovioToolkit.renderData(data, {});
-                verovioDiv.html(svg);
-            }
+    const app = new Verovio.App(verovioDiv, options);
+    fetch(file)
+        .then(function(response) {
+            return response.text();
+        })
+        .then(function(text) {
+            app.loadData(text);
         });
-    }
-
-});
-*/
+}
