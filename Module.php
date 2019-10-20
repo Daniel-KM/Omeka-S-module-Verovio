@@ -38,8 +38,38 @@ if (!class_exists(\Generic\AbstractModule::class)) {
 }
 
 use Generic\AbstractModule;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 class Module extends AbstractModule
 {
     const NAMESPACE = __NAMESPACE__;
+
+    public function install(ServiceLocatorInterface $serviceLocator)
+    {
+        $settings = $serviceLocator->get('Omeka\Settings');
+
+        $whitelist = $settings->get('media_type_whitelist', []);
+        if (!in_array('application/vnd.mei+xml', $whitelist)) {
+            $whitelist[] = 'application/vnd.mei+xml';
+        }
+        if (!in_array('image/svg+xml', $whitelist)) {
+            $whitelist[] = 'image/svg+xml';
+        }
+        if (!in_array('text/xml', $whitelist)) {
+            $whitelist[] = 'text/xml';
+        }
+        $settings->set('media_type_whitelist', $whitelist);
+
+        $whitelist = $settings->get('extension_whitelist', []);
+        if (!in_array('mei', $whitelist)) {
+            $whitelist[] = 'mei';
+        }
+        if (!in_array('svg', $whitelist)) {
+            $whitelist[] = 'svg';
+        }
+        if (!in_array('xml', $whitelist)) {
+            $whitelist[] = 'xml';
+        }
+        $settings->set('extension_whitelist', $whitelist);
+    }
 }
