@@ -38,6 +38,7 @@ if (!class_exists(\Generic\AbstractModule::class)) {
 }
 
 use Generic\AbstractModule;
+use Omeka\Module\Exception\ModuleCannotInstallException;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 class Module extends AbstractModule
@@ -46,6 +47,19 @@ class Module extends AbstractModule
 
     public function install(ServiceLocatorInterface $serviceLocator)
     {
+        $this->setServiceLocator($serviceLocator);
+
+        $js = __DIR__ . '/asset/vendor/rism-ch/verovio/verovio-toolkit.js';
+        if (!file_exists($js)) {
+            $t = $serviceLocator->get('MvcTranslator');
+            throw new ModuleCannotInstallException(
+                $t->translate('The Verovio library should be installed.') // @translate
+                    . ' ' . $t->translate('See module’s installation documentation.') // @translate
+            );
+        }
+
+        parent::install($serviceLocator);
+
         $settings = $serviceLocator->get('Omeka\Settings');
 
         $whitelist = $settings->get('media_type_whitelist', []);
