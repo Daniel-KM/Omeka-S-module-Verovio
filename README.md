@@ -3,8 +3,8 @@ Verovio MEI Viewer (module for Omeka S)
 
 [Verovio MEI Viewer] is a module for [Omeka S] that integrates [Verovio], a
 music notation engraving library designed for the Music Encoding Initiative. It
-displays [XML-MEI] files attached to items, so the visitor can read musical
-scores and listen them via MIDI.
+displays [XML-MEI] and [MusicXML] files attached to items, so the visitor can
+read musical scores and listen them via MIDI.
 
 
 Installation
@@ -45,15 +45,26 @@ Usage
 Because mei files are xml files, they are not automatically recognized by Omeka.
 To identify them, there are two solutions: use the file extension `.mei` or
 install the module [Next], that identify the xml-mei files with the unregistered
- vendor media type `application/vnd.mei+xml`.
+ vendor media type `application/vnd.mei+xml`. The point is the same for the
+ MusicXML files: use extensions `musicxml` or `mxl`. The vendor media type is
+ managed by the w3c: `application/vnd.recordare.musicxml`.
 
 The white lists of media types and extensions are automatically updated to
 allow to upload xml files, with the extension and media type above.
 
-### Display of MEI files
+### Display of MEI and MusicXML files
 
-When a file has extension `.mei` or media type `application/vnd.mei+xml`, it is
-automatically displayed anywhere, in public site or in admin board.
+When a file has extension `.mei`, `mxl`, or `musicxml`, or media type `application/vnd.mei+xml`
+or `application/vnd.recordare.musicxml`, it is automatically displayed anywhere,
+in public site or in admin board.
+
+__Warning__: The `mxl` format (zipped musicxml) is not supported by the included
+version of Verovio.
+
+__Warning__: The display of the musical scores may be slow on some computers:
+Verovio converts xml files into svg in order to display them. For big xml files,
+it's recommended to prepare the rendering on the server and to send the svg
+file with the xml data.
 
 
 Warning
@@ -115,6 +126,7 @@ University of Applied Sciences and Arts, Basel Academy of Music, Academy of Musi
 [Verovio MEI Viewer]: https://github.com/Daniel-KM/Omeka-S-module-Verovio
 [Verovio]: https://www.verovio.org
 [XML-MEI]: https://music-encoding.org
+[MusicXML]: https://w3c.github.io/musicxml/
 [Omeka S]: https://omeka.org/s
 [`Verovio.zip`]: https://github.com/Daniel-KM/Omeka-S-module-Verovio/releases
 [Next]: https://github.com/Daniel-KM/Omeka-S-module-Next

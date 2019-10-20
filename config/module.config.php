@@ -13,7 +13,10 @@ return [
         ],
         'aliases' => [
             'application/vnd.mei+xml' => 'verovio',
+            'application/vnd.recordare.musicxml' => 'verovio',
             'mei' => 'verovio',
+            'musicxml' => 'verovio',
+            'mxl' => 'verovio',
         ],
     ],
     'translator' => [

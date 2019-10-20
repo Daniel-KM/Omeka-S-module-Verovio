@@ -66,6 +66,9 @@ class Module extends AbstractModule
         if (!in_array('application/vnd.mei+xml', $whitelist)) {
             $whitelist[] = 'application/vnd.mei+xml';
         }
+        if (!in_array('application/vnd.recordare.musicxml', $whitelist)) {
+            $whitelist[] = 'application/vnd.recordare.musicxml';
+        }
         if (!in_array('image/svg+xml', $whitelist)) {
             $whitelist[] = 'image/svg+xml';
         }
@@ -77,6 +80,12 @@ class Module extends AbstractModule
         $whitelist = $settings->get('extension_whitelist', []);
         if (!in_array('mei', $whitelist)) {
             $whitelist[] = 'mei';
+        }
+        if (!in_array('musicxml', $whitelist)) {
+            $whitelist[] = 'musicxml';
+        }
+        if (!in_array('mxl', $whitelist)) {
+            $whitelist[] = 'mxl';
         }
         if (!in_array('svg', $whitelist)) {
             $whitelist[] = 'svg';
