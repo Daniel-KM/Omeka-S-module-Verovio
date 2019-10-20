@@ -66,6 +66,21 @@ Verovio converts xml files into svg in order to display them. For big xml files,
 it's recommended to prepare the rendering on the server and to send the svg
 file with the xml data.
 
+### Advanced display in public theme
+
+Because the viewer is integrated as a renderer and not a helper, it is possible
+to display it anywhere via the media. In particular, you can use the standard
+block "Media" to display it in any page.
+
+For a better integration in the sites, it's possible to customize the template:
+copy file `view/common/helper/verovio.phtml` in your theme and update it. To
+embed Verovio somewhere else, just render the media, with possible options, that
+are passed directly to the template:
+
+```php
+    echo $media->render($options);
+```
+
 
 Warning
 -------
