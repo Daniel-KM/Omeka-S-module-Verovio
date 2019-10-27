@@ -1,4 +1,4 @@
-/* Original mei-viewer javascript */
+/* Original mei-viewer javascript adapted to comply with bootstrap 3 and bootstrap 4. */
 
 $( document ).ready(function() {
 
@@ -440,20 +440,30 @@ $( document ).ready(function() {
 
         var form = $("<form class='form-horizontal' id='option-form'></form>");
         $('#option-div').append(form);
-        var tab_content = $("<div class='tab-content'></div>");
+        var tab_content = $("<div class='tab-content pt-3'></div>");
         form.append(tab_content);
 
         var i = 0;
         for (grp in options.groups) {
-            var li = $("<li role='presentation'></li>");
+            var li = $('<li class="nav-item" role="presentation"></li>');
             ul.append(li);
+            // In bootstrap 4, active is only on nav link.
             if (i == 0) {
-                li.attr("class", "active");
+                li.attr("class", "nav-item active");
             }
 
-            var a = $("<a></a>").attr("href", "#" + grp).attr("aria-controls", grp).attr("role", "tab").attr("data-toggle", "tab");
+            // Class and css should not start with a number (avoid an issue in bootstrap4).
+            grpId = 'p-' + grp;
+
+            var a = $('<a class="nav-link"></a>').attr("href", "#" + grpId).attr("aria-controls", grpId).attr("role", "tab").attr("data-toggle", "tab").attr('aria-selected', 'false');
             li.append(a);
             a.append(options.groups[grp].name);
+            if (i == 0) {
+                a.attr('class', 'nav-link active');
+                a.attr('aria-selected', 'true');
+            }
+            // In bootstrap 4, the link has an id.
+            a.attr("id", grpId + '-tab');
 
             var tab_panel = $("<div role='tabpanel'></div>");
             tab_content.append(tab_panel);
@@ -463,16 +473,16 @@ $( document ).ready(function() {
             else {
                 tab_panel.attr("class", "tab-pane panel-body");
             }
-            tab_panel.attr("id", grp);
+            tab_panel.attr("id", grpId).attr('aria-labelledby', grpId + '-tab');
 
             for (opt in options.groups[grp].options) {
 
                 var option = options.groups[grp].options[opt];
 
-                var form_group = $("<div class='form-group'></div>");
+                var form_group = $("<div class='form-group row'></div>");
                 tab_panel.append(form_group);
 
-                var label = $("<label class='col-sm-3 control-label'></label>");
+                var label = $("<label class='col-sm-3 control-label col-form-label'></label>");
                 form_group.append(label);
                 label.attr("for", opt);
                 label.append(option.title);
@@ -522,7 +532,7 @@ $( document ).ready(function() {
                 var help_div = $("<div class='col-sm-6'></div>");
                 form_group.append(help_div);
 
-                var help_p = $("<p class='help-block'></p>");
+                var help_p = $("<p class='help-block form-text'></p>");
                 help_div.append(help_p);
                 help_p.append().text(option.description).html();
 
