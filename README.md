@@ -66,16 +66,23 @@ Verovio converts xml files into svg in order to display them. For big xml files,
 it's recommended to prepare the rendering on the server and to send the svg
 file with the xml data.
 
+### Selection of the template of the viewer
+
+A site setting allows to select one of the four default templates to display it:
+a simple viewer, the official viewer based on Bootstrap 3, the same viewer based
+on Bootstrap 4, and a viewer to be customized.
+
+__Warning__: When the selected template uses jQuery, a js conflict may appear in
+the theme in some rare cases. So you may need to enable/disable or defer/undefer
+the jQuery library in the template.
+
+
 ### Advanced display in public theme
 
 Because the viewer is integrated as a renderer and not a helper, it is possible
 to display it anywhere via the media. In particular, you can use the standard
-block "Media" to display it in any page.
-
-For a better integration in the sites, it's possible to customize the template:
-copy file `view/common/helper/verovio.phtml` in your theme and update it. To
-embed Verovio somewhere else, just render the media, with possible options, that
-are passed directly to the template:
+block "Media" to display it in any page. So just render the media, with possible
+options, that are passed directly to the template:
 
 ```php
     echo $media->render($options);
@@ -87,6 +94,9 @@ Furthermore, a view helper is available to render any url anywhere:
     $options = ['source' => 'https://example.org/file.mei'];
     echo $this->verovio(null, $options);
 ```
+
+For a better integration in the sites, it's possible to customize the template:
+copy file `view/common/verovio-toolkit.phtml` in your theme and update it.
 
 
 Warning
