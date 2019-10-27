@@ -58,7 +58,7 @@ $this->headScript()
     <?= $translate('The viewer is loading…') ?>
 </div>
 
-<div class="verovio row-offcanvas row-offcanvas-right" <?= $options['attributes'] ?>>
+<div id="verovio-offcanvas" class="verovio row-offcanvas row-offcanvas-right" <?= $options['attributes'] ?>>
 
 <!-- modal -->
 <div class="modal fade" id="errorDialog" tabindex="-1" role="dialog">
@@ -257,6 +257,7 @@ $this->headScript()
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
         </button>
+
         <div class="btn-group">
             <button id="pdf-button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#pdfDialog" type="button" data-loading-text="<?= $escape($translate('Generating PDF…')) ?>" style="display: none;">
                 <span class="hidden-xs"><?= $translate('PDF') ?></span> <span class="glyphicon glyphicon-book"/>
@@ -264,7 +265,7 @@ $this->headScript()
             <button id="options-button" class="btn btn-sm btn-default hidden-xs" data-toggle="modal" data-target="#optionDialog" type="button" data-loading-text="<?= $escape($translate('Style editor…')) ?>" style="display: none;">
                 <span class="hidden-xs"><?= $translate('Options') ?></span> <span class="glyphicon glyphicon-wrench"/>
             </button>
-            <button id="play-button" class="btn btn-sm btn-default" type="button" style="display: none;">
+            <button id="play-button" class="btn btn-sm btn-default" type="button" style="display: none;" title="<?= $translate('Midi player') ?>">
                 <span class="glyphicon glyphicon-volume-up"/>
             </button>
         </div>
@@ -272,6 +273,13 @@ $this->headScript()
         <button type="button" id="mei_download" class="navbar-toggle menu-download" style="display: none;">
             <span class="glyphicon glyphicon-download"></span><span> <?= $translate('MEI') ?></span>
         </button>
+
+        <div class="btn-group">
+            <button id="fullscreen-button" class="btn btn-default" type="button" title="<?= $escape($translate('Full screen view')) ?>">
+                <span class="glyphicon glyphicon-fullscreen"/>
+            </button>
+        </div>
+
         <a class="navbar-brand logo-nav" href="https://www.verovio.org">
             <img src="<?= $assetUrl('vendor/verovio/img/verovio-fadded-50.png', 'Verovio') ?>" />
         </a>

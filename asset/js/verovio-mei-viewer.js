@@ -3,6 +3,7 @@
 $( document ).ready(function() {
 
     var verovioId = 'verovio';
+    var verovioOffCanvas = 'verovio-offcanvas';
     var verovioDiv = document.getElementById(verovioId);
 
     var vrvToolkit = new verovio.toolkit();
@@ -28,6 +29,10 @@ $( document ).ready(function() {
 
     if (localStorage['customOptions']) {
         customOptions = JSON.parse(localStorage['customOptions']);
+    }
+
+    function fullscreen() {
+        $('#verovio-offcanvas').toggleClass('fullscreen');
     }
 
     function calc_page_height() {
@@ -720,5 +725,7 @@ $( document ).ready(function() {
     $('#mei-files').on('change', function() {$('#submit-btn').popover('show');} );
 
     $('#play-button').on('click', play_midi);
+
+    $('#fullscreen-button').on('click', fullscreen);
 
 });
