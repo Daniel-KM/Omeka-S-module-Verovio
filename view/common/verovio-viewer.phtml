@@ -16,6 +16,7 @@ $source = isset($options['source']) ? $options['source'] : $resource->originalUr
 $this->headLink()
     // Latest compiled and minified CSS.
     ->appendStylesheet($assetUrl('vendor/bootstrap/css/bootstrap.min.css', 'Verovio'))
+    ->appendStylesheet($assetUrl('css/font-awesome.css', 'Verovio'))
     // Syntax highlighting CSS.
     ->appendStylesheet($assetUrl('vendor/verovio/css/syntax.css', 'Verovio'))
     // Custom CSS.
