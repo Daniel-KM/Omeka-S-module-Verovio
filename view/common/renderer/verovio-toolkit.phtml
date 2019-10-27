@@ -8,6 +8,9 @@
 $translate = $this->plugin('translate');
 $assetUrl = $this->plugin('assetUrl');
 
+$this->headLink()
+    ->appendStylesheet($assetUrl('css/verovio.css', 'Verovio'))
+;
 $this->headScript()
     // ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
     ->appendFile($assetUrl('vendor/rism-ch/verovio/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])

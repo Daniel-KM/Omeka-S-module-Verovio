@@ -1,0 +1,14 @@
+/* Verovio custom and fixes for common Omeka themes */
+@media screen {
+    #user-bar .show {
+        display: inline-block !important;
+    }
+    /* Omeka and Bootstrap use media for a different purpose. */
+    body.media {
+        display: inherit;
+        align-items: inherit;
+    }
+    #user-bar .admin.media {
+        display: inline;
+    }
+}

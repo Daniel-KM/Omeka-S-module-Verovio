@@ -9,6 +9,9 @@ $translate = $this->plugin('translate');
 $assetUrl = $this->plugin('assetUrl');
 
 $baseUrl = $this->serverUrl() . $assetUrl('vendor/rism-ch/verovio/', 'Verovio', false, false);
+$this->headLink()
+    ->appendStylesheet($assetUrl('css/verovio.css', 'Verovio'))
+;
 $this->headScript()
     ->appendFile($assetUrl('js/verovio.js', 'Verovio'), 'module')
 ;
