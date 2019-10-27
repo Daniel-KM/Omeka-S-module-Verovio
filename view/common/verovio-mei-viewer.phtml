@@ -361,6 +361,6 @@ $this->headScript()
 <noscript>
     <p>
         <?= $translate('This browser does not support javascript.') ?>
-        <?= sprintf($translate('You may %sdownload it%s to view it offline.'), '<a href="' . $escape($resource->originalUrl()) . '">', '</a>') ?>
+        <?= sprintf($translate('You may %sdownload it%s to view it offline.'), '<a href="' . $escape($source) . '">', '</a>') ?>
     </p>
 </noscript>

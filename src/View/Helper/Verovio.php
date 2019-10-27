@@ -12,7 +12,7 @@ class Verovio extends AbstractHelper
      */
     protected $defaultOptions = [
         'attributes' => 'allowfullscreen="allowfullscreen" style="height: 600px; height: 70vh; border: 1px solid lightgray;"',
-        'template' => 'app',
+        'template' => \Verovio\Media\FileRenderer\Verovio::PARTIAL_NAME,
     ];
 
     /**
@@ -26,13 +26,29 @@ class Verovio extends AbstractHelper
      */
     public function __invoke($resource, $options = [])
     {
-        // Prepare the url of the source for a dynamic collection.
+        if (isset($options['source'])) {
+            return $this->render($resource, $options);
+        }
+
+        if (empty($resource)) {
+            return '';
+        }
+
         if (is_array($resource)) {
             return '';
         }
 
-        if (isset($options['source'])) {
-            return $this->render($resource, $options);
+        $view = $this->getView();
+
+        // Determine the url of the source from a field in metadata. No check.
+        $sourceProperty = $view->setting('verovio_source_property');
+        if ($sourceProperty) {
+            $urlSource = $resource->value($sourceProperty);
+            if ($urlSource) {
+                // Manage the case where the url is saved as an uri or a text.
+                $options['source'] = $urlSource->uri() ?: $urlSource->value();
+                return $this->render($resource, $options);
+            }
         }
 
         $resourceName = $resource->resourceName();
@@ -85,16 +101,7 @@ class Verovio extends AbstractHelper
             $template = $this->defaultOptions['template'];
         }
 
-        $templates = [
-            'app' => 'common/renderer/verovio',
-            'bootstrap_3' => 'common/renderer/verovio-mei-viewer',
-            'custom' => 'common/renderer/verovio-toolkit',
-        ];
-        $template = isset($templates[$template])
-            ? $templates[$template]
-            : \Verovio\Media\FileRenderer\Verovio::PARTIAL_NAME;
         unset($options['template']);
-
         return $view->partial($template, [
             'resource' => $resource,
             'options' => $options,

@@ -9,23 +9,23 @@ $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $assetUrl = $this->plugin('assetUrl');
 
+$baseUrl = $this->serverUrl() . $assetUrl('vendor/verovio/js/', 'Verovio', false, false);
 $source = isset($options['source']) ? $options['source'] : $resource->originalUrl();
 
 $this->headLink()
     ->appendStylesheet($assetUrl('css/verovio.css', 'Verovio'))
 ;
 $this->headScript()
-    ->appendFile($assetUrl('vendor/verovio/js/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
-    ->appendFile($assetUrl('js/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('js/verovio.js', 'Verovio'), 'module')
 ;
 ?>
 
-<div id="verovio" class="verovio" data-url="<?= $escape($source) ?>" <?= $options['attributes'] ?>>
+<div id="verovio" class="verovio" data-base-url="<?= $escape($baseUrl) ?>" data-url="<?= $escape($source) ?>" <?= $options['attributes'] ?>>
     <?= $translate('The viewer is loading…') ?>
 </div>
 <noscript>
     <p>
         <?= $translate('This browser does not support javascript.') ?>
-        <?= sprintf($translate('You may %sdownload it%s to view it offline.'), '<a href="' . $escape($resource->originalUrl()) . '">', '</a>') ?>
+        <?= sprintf($translate('You may %sdownload it%s to view it offline.'), '<a href="' . $escape($source) . '">', '</a>') ?>
     </p>
 </noscript>

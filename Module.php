@@ -101,6 +101,17 @@ class Module extends AbstractModule
     public function attachListeners(SharedEventManagerInterface $sharedEventManager)
     {
         $sharedEventManager->attach(
+            \Omeka\Form\SettingForm::class,
+            'form.add_elements',
+            [$this, 'handleMainSettings']
+        );
+        $sharedEventManager->attach(
+            \Omeka\Form\SettingForm::class,
+            'form.add_input_filters',
+            [$this, 'handleMainSettingsFilters']
+        );
+
+        $sharedEventManager->attach(
             \Omeka\Form\SiteSettingsForm::class,
             'form.add_elements',
             [$this, 'handleSiteSettings']
@@ -110,6 +121,16 @@ class Module extends AbstractModule
             'form.add_input_filters',
             [$this, 'handleSiteSettingsFilters']
         );
+    }
+
+    public function handleMainSettingsFilters(Event $event)
+    {
+        $inputFilter = $event->getParam('inputFilter');
+        $inputFilter->get('verovio')
+            ->add([
+                'name' => 'verovio_source_property',
+                'required' => false,
+            ]);
     }
 
     public function handleSiteSettingsFilters(Event $event)

@@ -17,9 +17,9 @@ class SiteSettingsFieldset extends Fieldset
                 'options' => [
                     'label' => 'Verovio template', // @translate
                     'value_options' => [
-                        'app' => 'App (simple viewer)', // @translate
-                        'web' => 'Web (full viewer)', // @translate
-                        'custom' => 'Custom (via theme)', // @translate
+                        'common/verovio' => 'App (simple viewer)', // @translate
+                        'common/verovio-mei-viewer' => 'Official (Bootstrap 3)', // @translate
+                        'common/verovio-toolkit' => 'Custom (via theme)', // @translate
                     ],
                 ],
                 'attributes' => [

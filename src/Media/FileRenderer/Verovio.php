@@ -10,14 +10,14 @@ class Verovio implements RendererInterface
     /**
      * The default partial view script.
      */
-    const PARTIAL_NAME = 'common/renderer/verovio';
+    const PARTIAL_NAME = 'common/verovio';
 
     /**
      * @var array
      */
     protected $defaultOptions = [
         'attributes' => 'allowfullscreen="allowfullscreen" style="height: 600px; height: 70vh; border: 1px solid lightgray;"',
-        'template' => 'app',
+        'template' => \Verovio\Media\FileRenderer\Verovio::PARTIAL_NAME,
     ];
 
     /**
@@ -49,18 +49,9 @@ class Verovio implements RendererInterface
             $template = $this->defaultOptions['template'];
         }
 
-        $templates = [
-            'app' => 'common/renderer/verovio',
-            'web' => 'common/renderer/verovio-mei-viewer',
-            'custom' => 'common/renderer/verovio-toolkit',
-        ];
-        $template = isset($templates[$template])
-            ? $templates[$template]
-            : self::PARTIAL_NAME;
         unset($options['template']);
-
         return $view->partial($template, [
-            'media' => $media,
+            'resource' => $media,
             'options' => $options,
         ]);
     }

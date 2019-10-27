@@ -26,6 +26,7 @@ return [
     ],
     'form_elements' => [
         'invokables' => [
+            Form\SettingsFieldset::class => Form\SettingsFieldset::class,
             Form\SiteSettingsFieldset::class => Form\SiteSettingsFieldset::class,
         ],
     ],
@@ -40,8 +41,11 @@ return [
         ],
     ],
     'verovio' => [
+        'settings' => [
+            'verovio_source_property' => null,
+        ],
         'site_settings' => [
-            'verovio_template' => 'app',
+            'verovio_template' => 'common/verovio',
         ],
     ],
 ];
