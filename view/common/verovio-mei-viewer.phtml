@@ -158,56 +158,22 @@ $this->headScript()
         <div id="downloads_panel_body">
             <div class="row">
                 <div class="col-md-12">
-
-                    <div >
+                    <?php $examples = [
+                        ['file' => 'Brahms_StringQuartet_Op51_No1.mei', 'title' => 'Brahms Op 51/1', 'description' => 'String quartet, 7 pages - 640Kb'],
+                        ['file' => 'Chopin_Etude_op.10_no.9.mei', 'title' => 'Chopin op.10/9', 'description' => 'Etude, 3 pages - 400Kb'],
+                        ['file' => 'Marenzio_Sesto_a_5_01.mei', 'title' => 'Marenzio Madrigal a 5', 'description' => 'Lib. 6, S’io parto, 4 pages - 119Kb'],
+                        ['file' => 'Hummel_Concerto_for_trumpet.mei', 'title' => 'Hummel Concerto', 'description' => 'Orchestra score, 121 pages - 7Mb'],
+                        ['file' => 'Schubert_Lindenbaum.mei', 'title' => 'Schubert Lied', 'description' => 'Der Lindenbaum, 2 pages - 130Kb'],
+                        ['file' => 'Krebs_Trio_Eb_2.mei', 'title' => 'Krebs Trio in Eb', 'description' => 'Organ score, 6 pages - 380Kb'],
+                        ['file' => 'Ahle_Jesu_meines_Herzens_Freud.mei', 'title' => 'Ahle, Jesu, meines Herzens Freud', 'description' => 'Choral, 1 page - 70Kb'],
+                    ]; ?>
+                    <?php foreach ($examples as $example): ?>
+                     <div >
                         <p>
-                        <a href="https://www.verovio.org/mei-viewer.xhtml?file=examples/downloads/Brahms_StringQuartet_Op51_No1.mei">Brahms Op 51/1</a><br/>
-                         String quartet, 7 pages - 640Kb
-                        </p>
+                        <?= $hyperlink($example['title'], $assetUrl('vendor/verovio/examples/' . $example['file'])) ?><br/>
+                        <?= $example['description'] ?>
                     </div>
-
-                    <div >
-                        <p>
-                        <a href="https://www.verovio.org/mei-viewer.xhtml?file=examples/downloads/Chopin_Etude_op.10_no.9.mei">Chopin op.10/9</a><br/>
-                         Etude, 3 pages - 400Kb
-                        </p>
-                    </div>
-
-                    <div >
-                        <p>
-                        <a href="https://www.verovio.org/mei-viewer.xhtml?file=examples/downloads/Marenzio_Sesto_a_5_01.mei">Marenzio Madrigal a 5</a><br/>
-                         Lib. 6, S’io parto, 4 pages - 119Kb
-                        </p>
-                    </div>
-
-                    <div class="hidden-sm hidden-xs">
-                        <p>
-                        <a href="https://www.verovio.org/mei-viewer.xhtml?file=examples/downloads/Hummel_Concerto_for_trumpet.mei">Hummel Concerto</a><br/>
-                         Orchestra score, 121 pages - 7Mb
-                        </p>
-                    </div>
-
-                    <div >
-                        <p>
-                        <a href="https://www.verovio.org/mei-viewer.xhtml?file=examples/downloads/Schubert_Lindenbaum.mei">Schubert Lied</a><br/>
-                         Der Lindenbaum, 2 pages - 130Kb
-                        </p>
-                    </div>
-
-                    <div >
-                        <p>
-                        <a href="https://www.verovio.org/mei-viewer.xhtml?file=examples/downloads/Krebs_Trio_Eb_2.mei">Krebs Trio in Eb</a><br/>
-                         Organ score, 6 pages - 380Kb
-                        </p>
-                    </div>
-
-                    <div >
-                        <p>
-                        <a href="https://www.verovio.org/mei-viewer.xhtml?file=examples/downloads/Ahle_Jesu_meines_Herzens_Freud.mei">Ahle, Jesu, meines Herzens Freud</a><br/>
-                         Choral, 1 page - 70Kb
-                        </p>
-                    </div>
-
+                    <?php endforeach; ?>
                 </div>
                 <!-- /.col-md-6 -->
             </div>
