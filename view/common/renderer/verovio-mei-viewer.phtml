@@ -8,6 +8,8 @@
 $translate = $this->plugin('translate');
 $assetUrl = $this->plugin('assetUrl');
 
+$baseUrl = $this->serverUrl() . $assetUrl('vendor/verovio/js/', 'Verovio', false, false);
+
 $this->headLink()
     // Latest compiled and minified CSS.
     ->appendStylesheet($assetUrl('vendor/bootstrap/css/bootstrap.min.css', 'Verovio'))
@@ -51,14 +53,17 @@ $this->headScript()
 ;
 ?>
 
-<div id="overlay">
-    Downloading ...
+<div id="verovio" class="verovio" data-base-url="<?= $baseUrl ?>" data-url="<?= $media->originalUrl() ?>">
+    <?= $translate('The viewer is loading…') ?>
 </div>
 
-<div class="row-offcanvas row-offcanvas-right">
+<div class="verovio row-offcanvas row-offcanvas-right" <?= $options['attributes'] ?>>
 
 <script type="text/javascript">
 //<![CDATA[
+    var verovioId = 'verovio';
+    var verovioDiv = document.getElementById(verovioId);
+
     var vrvToolkit = new verovio.toolkit();
     var page = 1;
     var zoom = 40;
@@ -148,7 +153,7 @@ $this->headScript()
             vrvToolkit.loadData(data);
 
             if (vrvToolkit.getPageCount() == 0) {
-                $("#overlay").hide().css("cursor", "auto");
+                $("#verovio").hide().css("cursor", "auto");
                 log = vrvToolkit.getLog();
                 $('#err').text(log).html();
                 $('#errorDialog').modal();
@@ -173,7 +178,7 @@ $this->headScript()
             }
         }
         catch(err) {
-            $("#overlay").hide().css("cursor", "auto");
+            $("#verovio").hide().css("cursor", "auto");
             $('#err').html(err);
             $('#errorDialog').modal();
         }
@@ -181,7 +186,7 @@ $this->headScript()
     }
 
     function load_page() {
-        $("#overlay").hide().css("cursor", "auto");
+        $("#verovio").hide().css("cursor", "auto");
         $("#jump_text").val(page);
 
         svg = vrvToolkit.renderToSVG(page, {});
@@ -692,7 +697,7 @@ $this->headScript()
             <span class="glyphicon glyphicon-download"></span><span> MEI</span>
         </button>
         <a class="navbar-brand logo-nav" href="https://www.verovio.org">
-            <img src="https://www.verovio.org/images/verovio-fadded-50.png" />
+            <img src="<?= $assetUrl('vendor/verovio/img/verovio-fadded-50.png', 'Verovio') ?>" />
         </a>
         <div style="clear: both;"></div>
         <hr/>
@@ -931,7 +936,10 @@ $this->headScript()
         enable_swipe( true );
 
         // Load the default file or the file passed in the URL
-        var file = getParameterByName("file");
+        var file = verovioDiv.getAttribute('data-url');
+        if (!file) {
+            file = getParameterByName("file");
+        }
         var musicxml = getParameterByName("musicxml");
         var local = getParameterByName("local");
 
@@ -952,7 +960,7 @@ $this->headScript()
             else {
                 target = window.location.hash;
             }
-            $("#overlay").show();
+            $("#verovio").show();
             $.ajax({
                 url: file
                 , dataType: "text"

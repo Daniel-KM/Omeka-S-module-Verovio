@@ -4,7 +4,7 @@ var verovioId = 'verovio';
 var verovioDiv = document.getElementById(verovioId);
 var file = verovioDiv.getAttribute('data-url');
 if (typeof file === 'undefined') {
-    file = new URLSearchParams(window.location.search).get('mei-url');
+    file = new URLSearchParams(window.location.search).get('file');
 }
 if (file) {
     var request = new XMLHttpRequest();
