@@ -99,19 +99,19 @@ $this->headScript()
                 </p>
                 <div class="input-group input-group-sm" style="width: 20px;">
                     <span class="input-group-btn">
-                        <button onclick="first_page()" class="btn btn-default" type="button">
+                        <button id="first-page-button" class="btn btn-default" type="button">
                             <span class="glyphicon glyphicon-fast-backward"/>
                         </button>
-                        <button onclick="prev_page()" class="btn btn-default" type="button">
+                        <button id="prev-page-button" class="btn btn-default" type="button">
                             <span class="glyphicon glyphicon-backward"/>
                         </button>
                     </span>
-                    <input type="text" class="form-control" placeholder="0" id="jump_text" style="width: 45px !important;" onkeypress="do_page_enter(event)"/>
+                    <input id="jump-text" type="text" class="form-control" placeholder="0" style="width: 45px !important;"/>
                     <span class="input-group-btn">
-                        <button onclick="next_page()" class="btn btn-default" type="button">
+                        <button id="next-page-button" class="btn btn-default" type="button">
                             <span class="glyphicon glyphicon-forward"/>
                         </button>
-                        <button onclick="last_page()" class="btn btn-default" type="button">
+                        <button id="last-page-button" class="btn btn-default" type="button">
                             <span class="glyphicon glyphicon-fast-forward"/>
                         </button>
                     </span>
@@ -129,13 +129,13 @@ $this->headScript()
                 </p>
                 <div class="input-group input-group-sm" style="width: 20px;">
                     <span class="input-group-btn">
-                        <button onclick="zoom_out()" class="btn btn-default" type="button">
+                        <button id="zoom-out-button" class="btn btn-default" type="button">
                             <span class="glyphicon glyphicon-zoom-out"/>
                         </button>
                     </span>
-                    <input type="text" class="form-control" style="width:60px !important;" placeholder="100%" id="zoom_text" onkeypress="do_zoom_enter(event)"/>
+                    <input id="zoom-text" type="text" class="form-control" style="width:60px !important;" placeholder="100%"/>
                     <span class="input-group-btn">
-                        <button onclick="zoom_in()" class="btn btn-default" type="button">
+                        <button id="zoom-in-button" class="btn btn-default" type="button">
                             <span class="glyphicon glyphicon-zoom-in"/>
                         </button>
                     </span>
@@ -220,10 +220,10 @@ $this->headScript()
         </div>
 
         <div id="options_panel_body">
-            <form id="upload_form" onsubmit="upload_file( $('#upload_form') ); return false" class="form-inline" role="form">
+            <form id="upload-form" class="form-inline" role="form">
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="file" id="mei_files" onchange="$('#submit-btn').popover('show');" name="file" style="margin: 4px 0px 8px 0px;"/>
+                        <input id="mei-files" type="file" name="file" style="margin: 4px 0px 8px 0px;"/>
                     </div>
                     <div class="col-md-12">
                         <button type="submit" id="submit-btn" class="btn btn-default btn-sm popover-btn" data-container="body" data-toggle="popover" data-placement="left" data-content="Click to display the MEI file!" data-trigger="manual">Render</button>
@@ -263,7 +263,7 @@ $this->headScript()
             <button id="options-button" class="btn btn-sm btn-default hidden-xs" data-toggle="modal" data-target="#optionDialog" type="button" data-loading-text="Style editor..." style="display: none;">
                 <span class="hidden-xs">Options </span><span class="glyphicon glyphicon-wrench"/>
             </button>
-            <button id="play-button" onclick="play_midi();" class="btn btn-sm btn-default" type="button" style="display: none;">
+            <button id="play-button" class="btn btn-sm btn-default" type="button" style="display: none;">
                 <span class="glyphicon glyphicon-volume-up"/>
             </button>
         </div>
