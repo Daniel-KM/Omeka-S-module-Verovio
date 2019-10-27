@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 00:00+0200\n"
+"POT-Creation-Date: 2019-10-28 00:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Module.php:56
+#: Module.php:58
 msgid "The Verovio library should be installed."
 msgstr ""
 
-#: Module.php:57
+#: Module.php:59
 msgid "See module’s installation documentation."
 msgstr ""
 
@@ -42,18 +42,227 @@ msgid ""
 "unavailable."
 msgstr ""
 
-#: view/common/renderer/verovio-toolkit.phtml:18
-#: view/common/renderer/verovio.phtml:17
+#: view/common/verovio-mei-viewer.phtml:63 view/common/verovio-toolkit.phtml:28
+#: view/common/verovio-viewer.phtml:61 view/common/verovio.phtml:28
 msgid "The viewer is loading…"
 msgstr ""
 
-#: view/common/renderer/verovio-toolkit.phtml:21
-#: view/common/renderer/verovio.phtml:20
+#: view/common/verovio-mei-viewer.phtml:77 view/common/verovio-viewer.phtml:77
+msgid "Sorry, Verovio failed to process the MEI data."
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:96 view/common/verovio-viewer.phtml:98
+msgid "First page"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:99 view/common/verovio-viewer.phtml:101
+msgid "Previous page"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:103
+#: view/common/verovio-viewer.phtml:105
+msgid "Jump to page"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:105
+#: view/common/verovio-viewer.phtml:107
+msgid "Next page"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:108
+#: view/common/verovio-viewer.phtml:110
+msgid "Last page"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:118
+#: view/common/verovio-viewer.phtml:118
+msgid "Zoom out"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:122
+#: view/common/verovio-viewer.phtml:122
+msgid "Zoom"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:124
+#: view/common/verovio-viewer.phtml:124
+msgid "Zoom in"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:132
+#: view/common/verovio-viewer.phtml:131
+msgid "Generate a PDF file"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:132
+#: view/common/verovio-viewer.phtml:131
+msgid "Generating PDF…"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:134
+#: view/common/verovio-viewer.phtml:133
+msgid "PDF"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:136
+#: view/common/verovio-viewer.phtml:135
+msgid "Edit styles"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:136
+#: view/common/verovio-viewer.phtml:135
+msgid "Style editor…"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:140
+#: view/common/verovio-viewer.phtml:139
+msgid "Download"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:143
+#: view/common/verovio-viewer.phtml:142
+msgid "Midi player"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:158
+#: view/common/verovio-viewer.phtml:157
+msgid "Help"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:159
+#: view/common/verovio-viewer.phtml:158
+msgid ""
+"On mobile devices, you can swipe left or right to change page and tap or "
+"double tap to zoom-in or zoom-out. On desktops, you can use [ctrl+] left or "
+"right arrows and +/- keys."
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:161
+#: view/common/verovio-viewer.phtml:160
+#, php-format
+msgid ""
+"This viewer uses the latest development version %s and might be unstable."
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:168
+#: view/common/verovio-viewer.phtml:167
+msgid "Full screen view"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:186
+#: view/common/verovio-viewer.phtml:185
+msgid "PDF options"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:201
+#: view/common/verovio-viewer.phtml:201
+msgid "Orientation"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:204
+#: view/common/verovio-viewer.phtml:203
+msgid "Portrait"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:205
+#: view/common/verovio-viewer.phtml:204
+msgid "Landscape"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:213
+#: view/common/verovio-viewer.phtml:211
+msgid "Warning!"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:213
+#: view/common/verovio-viewer.phtml:211
+msgid "This is an experimental feature and it can take some time."
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:216
+#: view/common/verovio-mei-viewer.phtml:236
+#: view/common/verovio-viewer.phtml:214 view/common/verovio-viewer.phtml:236
+msgid "OK"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:234
+#: view/common/verovio-viewer.phtml:234
+msgid "Reset to default"
+msgstr ""
+
+#: view/common/verovio-mei-viewer.phtml:246
+#: view/common/verovio-toolkit.phtml:32 view/common/verovio-viewer.phtml:246
+#: view/common/verovio.phtml:32
 msgid "This browser does not support javascript."
 msgstr ""
 
-#: view/common/renderer/verovio-toolkit.phtml:22
-#: view/common/renderer/verovio.phtml:21
+#: view/common/verovio-mei-viewer.phtml:247
+#: view/common/verovio-toolkit.phtml:33 view/common/verovio-viewer.phtml:247
+#: view/common/verovio.phtml:33
 #, php-format
 msgid "You may %sdownload it%s to view it offline."
+msgstr ""
+
+#: src/Form/SettingsFieldset.php:9 src/Form/SiteSettingsFieldset.php:9
+msgid "Verovio MEI viewer"
+msgstr ""
+
+#: src/Form/SettingsFieldset.php:18
+msgid "Property used for external MEI"
+msgstr ""
+
+#: src/Form/SettingsFieldset.php:19
+msgid ""
+"The property supplying the MEI file via URL, for example \"dcterms:hasFormat"
+"\" or \"dcterms:isFormatOf\"."
+msgstr ""
+
+#: src/Form/SettingsFieldset.php:26
+msgid "Select a property…"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:18
+msgid "Verovio template"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:21 src/Form/VerovioFieldset.php:44
+msgid "App (simple viewer)"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:22 src/Form/VerovioFieldset.php:45
+msgid "Official (Bootstrap 3)"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:23 src/Form/VerovioFieldset.php:46
+msgid "Web (Bootstrap 4)"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:24 src/Form/VerovioFieldset.php:47
+msgid "Custom (via theme)"
+msgstr ""
+
+#: src/Form/VerovioFieldset.php:16
+msgid "Block title"
+msgstr ""
+
+#: src/Form/VerovioFieldset.php:17
+msgid "Heading for the block, if any."
+msgstr ""
+
+#: src/Form/VerovioFieldset.php:29
+msgid ""
+"The url to display. Note: media attached to items are automatically rendered "
+"via common blocks, in particular \"Media\"."
+msgstr ""
+
+#: src/Form/VerovioFieldset.php:40
+msgid "Template to display"
+msgstr ""
+
+#: src/Form/VerovioFieldset.php:53
+msgid "Select a template…"
+msgstr ""
+
+#: src/Site/BlockLayout/Verovio.php:20
+msgid "Verovio viewer"
 msgstr ""
