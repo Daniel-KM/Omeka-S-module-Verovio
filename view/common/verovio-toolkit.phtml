@@ -20,6 +20,10 @@ $this->headScript()
 ;
 ?>
 
+<?php if (!empty($options['heading'])): ?>
+    <h2><?= $options['heading'] ?></h2>
+<?php endif; ?>
+
 <div id="verovio" class="verovio" data-url="<?= $escape($source) ?>" <?= $options['attributes'] ?>>
     <?= $translate('The viewer is loading…') ?>
 </div>

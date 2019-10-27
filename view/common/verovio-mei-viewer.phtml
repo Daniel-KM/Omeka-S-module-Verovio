@@ -56,6 +56,10 @@ $this->headScript()
 ;
 ?>
 
+<?php if (!empty($options['heading'])): ?>
+    <h2><?= $options['heading'] ?></h2>
+<?php endif; ?>
+
 <div id="verovio" class="verovio" data-base-url="<?= $escape($baseUrl) ?>" data-url="<?= $escape($source) ?>">
     <?= $translate('The viewer is loading…') ?>
 </div>

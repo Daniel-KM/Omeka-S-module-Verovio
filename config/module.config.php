@@ -24,10 +24,16 @@ return [
             'verovio' => View\Helper\Verovio::class,
         ],
     ],
+    'block_layouts' => [
+        'invokables' => [
+            'verovio' => Site\BlockLayout\Verovio::class,
+        ],
+    ],
     'form_elements' => [
         'invokables' => [
             Form\SettingsFieldset::class => Form\SettingsFieldset::class,
             Form\SiteSettingsFieldset::class => Form\SiteSettingsFieldset::class,
+            Form\VerovioFieldset::class => Form\VerovioFieldset::class,
         ],
     ],
     'translator' => [
@@ -46,6 +52,13 @@ return [
         ],
         'site_settings' => [
             'verovio_template' => 'common/verovio',
+        ],
+        'block_settings' => [
+            'verovio' => [
+                'heading' => '',
+                'source' => '',
+                'template' => '',
+            ],
         ],
     ],
 ];
