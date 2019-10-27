@@ -49,7 +49,7 @@ class Module extends AbstractModule
     {
         $this->setServiceLocator($serviceLocator);
 
-        $js = __DIR__ . '/asset/vendor/rism-ch/verovio/verovio-toolkit.js';
+        $js = __DIR__ . '/asset/vendor/verovio/js/verovio-toolkit.js';
         if (!file_exists($js)) {
             $t = $serviceLocator->get('MvcTranslator');
             throw new ModuleCannotInstallException(

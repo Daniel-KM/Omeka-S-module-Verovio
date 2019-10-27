@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02a3dc89a44028fdc94159b9e872b1f0",
+    "content-hash": "3e29b2a63b7b68137a6e9217e2ad43ea",
     "packages": [
         {
             "name": "rism-ch/verovio",
             "version": "2.1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://github.com/rism-ch/verovio/releases/download/version-2.1.0/verovio-toolkit.js.zip"
+                "type": "file",
+                "url": "https://www.verovio.org/javascript/2.1.0/verovio-toolkit.js"
             },
             "type": "library"
         },

@@ -1,6 +1,6 @@
 /* Vanilla js (module). */
 
-import '../vendor/rism-ch/verovio/verovio-app.js';
+import '../vendor/verovio/js/verovio-app.js';
 
 var verovioId = 'verovio';
 var verovioDiv = document.getElementById(verovioId);

@@ -13,8 +13,8 @@ $this->headLink()
 ;
 $this->headScript()
     // ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
-    ->appendFile($assetUrl('vendor/rism-ch/verovio/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
-    ->appendFile($assetUrl('js/verovio-tk.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/verovio/js/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('js/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
 ;
 ?>
 

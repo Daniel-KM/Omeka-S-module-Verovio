@@ -9,8 +9,8 @@
         "name": "rism-ch/verovio",
         "version": "2.1.0",
         "dist": {
-          "url": "https://github.com/rism-ch/verovio/releases/download/version-2.1.0/verovio-toolkit.js.zip",
-          "type": "zip"
+          "url": "https://www.verovio.org/javascript/2.1.0/verovio-toolkit.js",
+          "type": "file"
         }
       }
     },
@@ -53,9 +53,9 @@
   },
   "extra": {
     "copy-file": {
-      "vendor/asset/rism-ch/verovio/verovio-toolkit.js": "asset/vendor/rism-ch/verovio/",
-      "vendor/asset/rism-ch/verovio-toolkit-wasm/verovio-toolkit-wasm.js": "asset/vendor/rism-ch/verovio/",
-      "vendor/asset/rism-ch/verovio-wasm/verovio.wasm": "asset/vendor/rism-ch/verovio/"
+      "vendor/asset/rism-ch/verovio/verovio-toolkit.js": "asset/vendor/verovio/js/",
+      "vendor/asset/rism-ch/verovio-toolkit-wasm/verovio-toolkit-wasm.js": "asset/vendor/verovio/js/",
+      "vendor/asset/rism-ch/verovio-wasm/verovio.wasm": "asset/vendor/verovio/js/"
     }
   }
 }
