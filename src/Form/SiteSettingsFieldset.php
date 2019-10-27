@@ -20,6 +20,7 @@ class SiteSettingsFieldset extends Fieldset
                         // Same options than the block.
                         'common/verovio' => 'App (simple viewer)', // @translate
                         'common/verovio-mei-viewer' => 'Official (Bootstrap 3)', // @translate
+                        'common/verovio-viewer' => 'Web (Bootstrap 4)', // @translate
                         'common/verovio-toolkit' => 'Custom (via theme)', // @translate
                     ],
                 ],
