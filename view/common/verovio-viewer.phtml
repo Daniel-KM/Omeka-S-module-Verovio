@@ -27,7 +27,8 @@ $this->headLink()
 ;
 
 $this->headScript()
-    ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
+    // jQuery should be added and/or deferred if not set in main layout (via prependFile() or offsetSetFile()).
+    // ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
     ->appendFile($assetUrl('vendor/jquery/jquery.touchSwipe.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     ->appendFile($assetUrl('vendor/bootstrap/js/bootstrap.bundle.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     ->appendFile($assetUrl('vendor/bootstrap-contextmenu/bootstrap-contextmenu.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
@@ -94,19 +95,19 @@ $this->headScript()
 
         <div class="btn-group input-group input-group-sm" style="width: auto;">
             <div class="input-group-prepend">
-                <button id="first-page-button" class="btn btn-sm btn-light" type="button">
+                <button id="first-page-button" class="btn btn-sm btn-light" type="button" title="<?= $translate('First page') ?>">
                     <span class="fas fa-fast-backward"></span>
                 </button>
-                <button id="prev-page-button" class="btn btn-sm btn-light" type="button">
+                <button id="prev-page-button" class="btn btn-sm btn-light" type="button" title="<?= $translate('Previous page') ?>">
                     <span class="fas fa-backward"></span>
                 </button>
             </div>
             <input id="jump-text" type="text" class="form-control" placeholder="0" aria-label="<?= $translate('Jump to page') ?>" style="width: 45px !important; text-align:center; border:0;"/>
             <div class="input-group-append">
-                <button id="next-page-button" class="btn btn-sm btn-light" type="button">
+                <button id="next-page-button" class="btn btn-sm btn-light" type="button" title="<?= $translate('Next page') ?>">
                     <span class="fas fa-forward"></span>
                 </button>
-                <button id="last-page-button" class="btn btn-sm btn-light" type="button">
+                <button id="last-page-button" class="btn btn-sm btn-light" type="button" title="<?= $translate('Last page') ?>">
                     <span class="fas fa-fast-forward"></span>
                 </button>
             </div>
@@ -114,26 +115,26 @@ $this->headScript()
 
         <div class="btn-group input-group input-group-sm" style="width: auto;">
             <div class="input-group-prepend">
-                <button id="zoom-out-button" class="btn btn-sm btn-light" type="button">
+                <button id="zoom-out-button" class="btn btn-sm btn-light" type="button" title="<?= $translate('Zoom out') ?>">
                     <span class="fas fa-search-minus"></span>
                 </button>
             </div>
             <input id="zoom-text" type="text" class="form-control" placeholder="100%" aria-label="<?= $translate('Zoom') ?>" style="width: 60px !important; width: text-align:center; border:0;"/>
             <div class="input-group-append">
-                <button id="zoom-in-button" class="btn btn-sm btn-light" type="button">
+                <button id="zoom-in-button" class="btn btn-sm btn-light" type="button" title="<?= $translate('Zoom in') ?>">
                     <span class="fas fa-search-plus"></span>
                 </button>
             </div>
         </div>
 
         <div class="btn-group">
-            <button id="pdf-button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#pdfDialog" type="button" data-loading-text="<?= $escape($translate('Generating PDF…')) ?>" style="display: none;">
-                <span class="d-none d-sm-block"><?= $translate('PDF') ?></span>
+            <button id="pdf-button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#pdfDialog" type="button" title="<?= $translate('Generate a PDF file') ?>" data-loading-text="<?= $escape($translate('Generating PDF…')) ?>" style="display: none;">
                 <span class="fas fa-book"></span>
+                <span class="d-none d-sm-block"><?= $translate('PDF') ?></span>
             </button>
-            <button id="options-button" class="btn btn-sm btn-outline-secondary hidden-xsd-none d-sm-block" data-toggle="modal" data-target="#optionDialog" type="button" data-loading-text="<?= $escape($translate('Style editor…')) ?>" style="display: none;">
-                <span class="d-none d-sm-block"><?= $translate('Options') ?></span>
+            <button id="options-button" class="btn btn-sm btn-outline-secondary hidden-xsd-none d-sm-block" data-toggle="modal" data-target="#optionDialog" type="button" title="<?= $translate('Edit styles') ?>" data-loading-text="<?= $escape($translate('Style editor…')) ?>" style="display: none;">
                 <span class="fas fa-wrench"></span>
+                <span class="d-none d-sm-block"><?= $translate('Options') ?></span>
             </button>
             <button id="mei-download" class="btn btn-sm btn-outline-secondary" type="button" title="<?= $translate('Download') ?>" style="display: none;">
                 <span class="fas fa-download"></span>

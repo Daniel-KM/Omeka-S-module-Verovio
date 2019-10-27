@@ -28,7 +28,7 @@ $this->headLink()
 ;
 
 $this->headScript()
-    // jQuery (necessary for Bootstrap's JavaScript plugins): Verovio uses jQuery > 1.9 and < 3.0.
+    // jQuery (necessary for Bootstrap's JavaScript plugins): Verovio official player uses jQuery > 1.9 and < 3.0.
     // ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
     ->appendFile($assetUrl('vendor/jquery/jquery.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     ->appendFile($assetUrl('vendor/jquery/jquery.touchSwipe.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
@@ -93,19 +93,19 @@ $this->headScript()
         <div class="btn-group">
             <div class="input-group input-group-sm" style="width: 20px;">
                 <span class="input-group-btn">
-                    <button id="first-page-button" class="btn btn-default" type="button">
+                    <button id="first-page-button" class="btn btn-default" type="button" title="<?= $translate('First page') ?>">
                         <span class="glyphicon glyphicon-fast-backward"></span>
                     </button>
-                    <button id="prev-page-button" class="btn btn-default" type="button">
+                    <button id="prev-page-button" class="btn btn-default" type="button" title="<?= $translate('Previous page') ?>">
                         <span class="glyphicon glyphicon-backward"></span>
                     </button>
                 </span>
-                <input id="jump-text" type="text" class="form-control" placeholder="0" style="width: 45px !important;"/>
+                <input id="jump-text" type="text" class="form-control" placeholder="0" style="width: 45px !important;" aria-label="<?= $translate('Jump to page') ?>"/>
                 <span class="input-group-btn">
-                    <button id="next-page-button" class="btn btn-default" type="button">
+                    <button id="next-page-button" class="btn btn-default" type="button" title="<?= $translate('Next page') ?>">
                         <span class="glyphicon glyphicon-forward"></span>
                     </button>
-                    <button id="last-page-button" class="btn btn-default" type="button">
+                    <button id="last-page-button" class="btn btn-default" type="button" title="<?= $translate('Last page') ?>">
                         <span class="glyphicon glyphicon-fast-forward"></span>
                     </button>
                 </span>
@@ -115,13 +115,13 @@ $this->headScript()
         <div class="btn-group">
             <div class="input-group input-group-sm" style="width: 20px;">
                 <span class="input-group-btn">
-                    <button id="zoom-out-button" class="btn btn-default" type="button">
+                    <button id="zoom-out-button" class="btn btn-default" type="button" title="<?= $translate('Zoom out') ?>">
                         <span class="glyphicon glyphicon-zoom-out"></span>
                     </button>
                 </span>
-                <input id="zoom-text" type="text" class="form-control" style="width:60px !important;" placeholder="100%"/>
+                <input id="zoom-text" type="text" class="form-control" aria-label="<?= $translate('Zoom') ?>" style="width:60px !important;" placeholder="100%"/>
                 <span class="input-group-btn">
-                    <button id="zoom-in-button" class="btn btn-default" type="button">
+                    <button id="zoom-in-button" class="btn btn-default" type="button" title="<?= $translate('Zoom in') ?>">
                         <span class="glyphicon glyphicon-zoom-in"></span>
                     </button>
                 </span>
@@ -129,13 +129,13 @@ $this->headScript()
         </div>
 
         <div class="btn-group">
-            <button id="pdf-button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#pdfDialog" type="button" data-loading-text="<?= $escape($translate('Generating PDF…')) ?>" style="display: none;">
-                <span class="hidden-xs"><?= $translate('PDF') ?></span>
+            <button id="pdf-button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#pdfDialog" type="button" title="<?= $translate('Generate a PDF file') ?>" data-loading-text="<?= $escape($translate('Generating PDF…')) ?>" style="display: none;">
                 <span class="glyphicon glyphicon-book"></span>
+                <span class="hidden-xs"><?= $translate('PDF') ?></span>
             </button>
-            <button id="options-button" class="btn btn-sm btn-default hidden-xs" data-toggle="modal" data-target="#optionDialog" type="button" data-loading-text="<?= $escape($translate('Style editor…')) ?>" style="display: none;">
-                <span class="hidden-xs"><?= $translate('Options') ?></span>
+            <button id="options-button" class="btn btn-sm btn-default hidden-xs" data-toggle="modal" data-target="#optionDialog" type="button" title="<?= $translate('Edit styles') ?>" data-loading-text="<?= $escape($translate('Style editor…')) ?>" style="display: none;">
                 <span class="glyphicon glyphicon-wrench"></span>
+                <span class="hidden-xs"><?= $translate('Options') ?></span>
             </button>
             <button id="mei-download" class="btn btn-sm btn-default" type="button" title="<?= $translate('Download') ?>" style="display: none;">
                 <span class="glyphicon glyphicon-download"></span>
