@@ -63,13 +63,14 @@ $this->headScript()
 
 <div id="verovio-offcanvas" class="verovio row-offcanvas row-offcanvas-right" <?= $options['attributes'] ?>>
 
-<!-- modal -->
-<div class="modal fade" id="errorDialog" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
+<div class="modal fade" id="errorDialog" tabindex="-1" role="dialog" aria-labelledby="errorDialogLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="<?= $translate('Close') ?>"><span aria-hidden="true" class="glyphicon glyphicon-remove"> </span></button>
-                <h4 class="modal-title" id="myModalLabel"><?= $translate('Error') ?></h4>
+                <h5 class="modal-title" id="errorDialogLabel"><?= $translate('Error') ?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="<?= $translate('Close') ?>">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <div class="alert alert-danger" role="alert">
@@ -78,6 +79,9 @@ $this->headScript()
                 <div id="errDiv">
                     <pre id="err"></pre>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $translate('Close') ?></button>
             </div>
         </div>
     </div>
@@ -261,33 +265,31 @@ $this->headScript()
     </div>
 </div>
 
-<div class="modal fade" id="pdfDialog" role="dialog" style="display: none;">
-    <div class="modal-dialog">
+<div class="modal fade" id="pdfDialog" tabindex="-1" role="dialog" aria-labelledby="pdfDialogLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4><?= $translate('PDF options') ?></h4>
+                <h5 class="modal-title" id="pdfDialogLabel"><?= $translate('PDF options') ?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="<?= $translate('Close') ?>">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form role="form">
                     <div class="form-group">
-                        <label for="inputEmail3"><?= $translate('Format') ?></label>
-                        <div>
-                            <select class="form-control" id="pdfFormat">
-                                <option value="A4">A4</option>
-                                <option value="letter">Letter</option>
-                                <option value="B4">B4</option>
-                            </select>
-                        </div>
+                        <label for="pdfFormat"><?= $translate('Format') ?></label>
+                        <select class="form-control" id="pdfFormat">
+                            <option value="A4">A4</option>
+                            <option value="letter">Letter</option>
+                            <option value="B4">B4</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword3"><?= $translate('Orientation') ?></label>
-                        <div>
-                            <select class="form-control" id="pdfOrientation">
-                                <option value="portrait"><?= $translate('Portrait') ?></option>
-                                <option value="landscape"><?= $translate('Landscape') ?></option>
-                            </select>
-                        </div>
+                        <label for="pdfOrientation"><?= $translate('Orientation') ?></label>
+                        <select class="form-control" id="pdfOrientation">
+                            <option value="portrait"><?= $translate('Portrait') ?></option>
+                            <option value="landscape"><?= $translate('Landscape') ?></option>
+                        </select>
                     </div>
                 </form>
             </div>
@@ -295,27 +297,29 @@ $this->headScript()
                 <div class="alert alert-warning" style="text-align:left;">
                     <strong><?= $translate('Warning!') ?></strong> <?= $translate('This is an experimental feature and it can take some time.') ?>
                 </div>
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><?= $translate('Cancel') ?></button>
-                <button type="button" id="pdfOK" class="btn btn-primary"><?= $translate('OK') ?></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $translate('Cancel') ?></button>
+                <button type="button" class="btn btn-primary"><?= $translate('OK') ?></button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="optionDialog" role="dialog" style="display: none;">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="optionDialog" tabindex="-1" role="dialog" aria-labelledby="optionDialogLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="<?= $escape($translate('Close')) ?>"><span aria-hidden="true">×</span></button>
-                <h4><?= $translate('Options') ?></h4>
+                <h5 class="modal-title" id="optionDialogLabel"><?= $translate('Options') ?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="<?= $translate('Close') ?>">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body" id="optionDialogContent">
                 <div id="option-div">
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="optionDefault" class="btn btn-outline-secondary"><?= $translate('Reset to default') ?></button>
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><?= $translate('Cancel') ?></button>
+                <button type="button" id="optionDefault" class="btn btn-warning"><?= $translate('Reset to default') ?></button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $translate('Cancel') ?></button>
                 <button type="button" id="optionOK" class="btn btn-primary"><?= $translate('OK') ?></button>
             </div>
         </div>
