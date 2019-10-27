@@ -61,39 +61,39 @@ class Module extends AbstractModule
         }
 
         parent::install($serviceLocator);
+        $this->updateWhitelists();
+    }
 
-        $settings = $serviceLocator->get('Omeka\Settings');
+    protected function updateWhitelist()
+    {
+        $settings = $this->getServiceLocator()->get('Omeka\Settings');
 
         $whitelist = $settings->get('media_type_whitelist', []);
-        if (!in_array('application/vnd.mei+xml', $whitelist)) {
-            $whitelist[] = 'application/vnd.mei+xml';
-        }
-        if (!in_array('application/vnd.recordare.musicxml', $whitelist)) {
-            $whitelist[] = 'application/vnd.recordare.musicxml';
-        }
-        if (!in_array('image/svg+xml', $whitelist)) {
-            $whitelist[] = 'image/svg+xml';
-        }
-        if (!in_array('text/xml', $whitelist)) {
-            $whitelist[] = 'text/xml';
+        $keys = [
+            'application/vnd.mei+xml',
+            'application/vnd.recordare.musicxml',
+            'image/svg+xml',
+            'text/xml',
+        ];
+        foreach ($keys as $key) {
+            if (!in_array($key, $whitelist)) {
+                $whitelist[] = $key;
+            }
         }
         $settings->set('media_type_whitelist', $whitelist);
 
         $whitelist = $settings->get('extension_whitelist', []);
-        if (!in_array('mei', $whitelist)) {
-            $whitelist[] = 'mei';
-        }
-        if (!in_array('musicxml', $whitelist)) {
-            $whitelist[] = 'musicxml';
-        }
-        if (!in_array('mxl', $whitelist)) {
-            $whitelist[] = 'mxl';
-        }
-        if (!in_array('svg', $whitelist)) {
-            $whitelist[] = 'svg';
-        }
-        if (!in_array('xml', $whitelist)) {
-            $whitelist[] = 'xml';
+        $keys = [
+            'mei',
+            'musicxml',
+            'mxl',
+            'svg',
+            'xml',
+        ];
+        foreach ($keys as $key) {
+            if (!in_array($key, $whitelist)) {
+                $whitelist[] = $key;
+            }
         }
         $settings->set('extension_whitelist', $whitelist);
     }

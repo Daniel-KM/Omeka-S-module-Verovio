@@ -17,7 +17,7 @@ class Verovio implements RendererInterface
      */
     protected $defaultOptions = [
         'attributes' => 'allowfullscreen="allowfullscreen" style="height: 600px; height: 70vh; border: 1px solid lightgray;"',
-        'template' => \Verovio\Media\FileRenderer\Verovio::PARTIAL_NAME,
+        'template' => self::PARTIAL_NAME,
     ];
 
     /**
@@ -38,15 +38,15 @@ class Verovio implements RendererInterface
         $isPublic = $view->params()->fromRoute('__SITE__');
         if ($isPublic) {
             $siteSetting = $view->plugin('siteSetting');
-            $options['attributes'] = isset($options['attributes'])
-                ? $options['attributes']
-                : $siteSetting('verovio_attributes', $this->defaultOptions['attributes']);
             $template = isset($options['template'])
                 ? $options['template']
                 : $siteSetting('verovio_template', $this->defaultOptions['template']);
+            $options['attributes'] = isset($options['attributes'])
+                ? $options['attributes']
+                : $this->defaultOptions['attributes'];
         } else {
-            $options['attributes'] = $this->defaultOptions['attributes'];
             $template = $this->defaultOptions['template'];
+            $options['attributes'] = $this->defaultOptions['attributes'];
         }
 
         unset($options['template']);

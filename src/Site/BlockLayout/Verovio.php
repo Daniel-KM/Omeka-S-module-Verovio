@@ -52,6 +52,6 @@ class Verovio extends AbstractBlockLayout
             return '';
         }
 
-        return $view->partial('common/block-layout/verovio', ['options' => $data]);
+        return $view->partial(self::PARTIAL_NAME, ['options' => $data]);
     }
 }

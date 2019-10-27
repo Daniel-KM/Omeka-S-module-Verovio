@@ -90,15 +90,15 @@ class Verovio extends AbstractHelper
         $isPublic = $view->params()->fromRoute('__SITE__');
         if ($isPublic) {
             $siteSetting = $view->plugin('siteSetting');
-            $options['attributes'] = isset($options['attributes'])
-                ? $options['attributes']
-                : $siteSetting('verovio_attributes', $this->defaultOptions['attributes']);
             $template = isset($options['template'])
                 ? $options['template']
                 : $siteSetting('verovio_template', $this->defaultOptions['template']);
+            $options['attributes'] = isset($options['attributes'])
+                ? $options['attributes']
+                : $this->defaultOptions['attributes'];
         } else {
-            $options['attributes'] = $this->defaultOptions['attributes'];
             $template = $this->defaultOptions['template'];
+            $options['attributes'] = $this->defaultOptions['attributes'];
         }
 
         unset($options['template']);
