@@ -13,6 +13,11 @@
         display: inline;
     }
 
+    /* Fix for the midi player. */
+    #midiPlayer_playingTime,
+    #midiPlayer_totalTime {
+        width: 45px;
+    }
     /* Fix for bootstrap. */
     #verovio-offcanvas.fullscreen {
         position: fixed !important;
