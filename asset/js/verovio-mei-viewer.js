@@ -33,6 +33,7 @@ $( document ).ready(function() {
 
     function fullscreen() {
         $('#verovio-offcanvas').toggleClass('fullscreen');
+        $('body').toggleClass('has-overlay');
     }
 
     function calc_page_height() {
@@ -73,7 +74,7 @@ $( document ).ready(function() {
     function upload_file() {
 
         format = 'mei';
-        $("#mei_download").hide();
+        $("#mei-download").hide();
         $('#submit-btn').popover('hide');
         var f = $("#mei-files").prop('files')[0];
         var reader = new FileReader();
@@ -105,7 +106,7 @@ $( document ).ready(function() {
                 $('#errorDialog').modal();
             }
             else {
-                $("#total_text").html(vrvToolkit.getPageCount());
+                $("#total-text").html(vrvToolkit.getPageCount());
                 page = 1;
                 var pageTarget = 0;
                 if (target != "") {
@@ -183,7 +184,7 @@ $( document ).ready(function() {
 
         vrvToolkit.redoLayout();
 
-        $("#total_text").html(vrvToolkit.getPageCount());
+        $("#total-text").html(vrvToolkit.getPageCount());
         page = 1;
         if (measure != 0) {
             page = vrvToolkit.getPageWithElement(measure);
@@ -570,7 +571,7 @@ $( document ).ready(function() {
         $("span", this).toggleClass("glyphicon-chevron-down glyphicon-chevron-left");
     });
 
-    $( "#mei_download" ).click(function() {
+    $( "#mei-download" ).click(function() {
         outputFilename = outputFilename.replace(/\.[^\.]+$/, '.mei');
         saveAs(new Blob([vrvToolkit.getMEI(-1, true)], {type: "text/xml;charset=utf-8"}), outputFilename);
     });
@@ -596,7 +597,7 @@ $( document ).ready(function() {
 
     if (musicxml == "true") {
         format = 'musicxml';
-        $("#mei_download").show();
+        $("#mei-download").show();
     }
 
     if (local == "true") {
@@ -727,5 +728,9 @@ $( document ).ready(function() {
     $('#play-button').on('click', play_midi);
 
     $('#fullscreen-button').on('click', fullscreen);
+
+    $('.popover-dismiss').popover({
+        trigger: 'focus',
+    })
 
 });

@@ -13,6 +13,7 @@
         display: inline;
     }
 
+    /* Fix for bootstrap. */
     #verovio-offcanvas.fullscreen {
         position: fixed !important;
         top: 0 !important;
@@ -25,5 +26,22 @@
     .row-offcanvas.active #sidebar {
         width: 297px;
         z-index: 10;
+        overflow-x: inherit;
+    }
+    body.has-overlay {
+        overflow: hidden;
+    }
+    .popover.show {
+        z-index: 10000;
+    }
+    /* Fixes for bootstrap 4. */
+    #verovio-offcanvas #navbar .d-sm-block,
+    #verovio-offcanvas #navbar .d-md-block,
+    #verovio-offcanvas #navbar .d-md-block,
+    #verovio-offcanvas #navbar .d-xl-block {
+       display: inline-block !important;
+    }
+    .sidebar-toggle {
+       display: inline-block !important;
     }
 }
