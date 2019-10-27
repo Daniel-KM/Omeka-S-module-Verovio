@@ -547,7 +547,15 @@ $( document ).ready(function() {
     var n = version.lastIndexOf('-');
     var commit = version.substring(n + 1);
     $('#version').text( version );
-    $("#version").attr( "href", "http://github.com/rism-ch/verovio/commit/" + commit ) ;
+    $("#version").attr( "href", "http://github.com/rism-ch/verovio/commit/" + commit );
+    // Manage the tooltip in version without sidebar.
+    var verovioHelp = $('#verovio-help');
+    if (verovioHelp.length > 0) {
+        $('#verovio-help').attr('data-content', $('#verovio-help').attr('data-content').replace(
+                '<a href="" id="version">[version]</a>',
+                '<a href="http://github.com/rism-ch/verovio/commit/' + commit + '" id="version">[' + version + ' ]</a>')
+            );
+    }
 
     $(window).keyup(function(event){
         // We need to make sure not to capture event on text fields
@@ -743,8 +751,6 @@ $( document ).ready(function() {
 
     $('#fullscreen-button').on('click', fullscreen);
 
-    $('.popover-dismiss').popover({
-        trigger: 'focus',
-    })
+    $('.popover-dismiss').popover({});
 
 });

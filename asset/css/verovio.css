@@ -31,6 +31,7 @@
     body.has-overlay {
         overflow: hidden;
     }
+    .popover.in,
     .popover.show {
         z-index: 10000;
     }
