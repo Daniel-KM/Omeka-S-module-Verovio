@@ -19,7 +19,7 @@ class Verovio implements RendererInterface
      * @var array
      */
     protected $defaultOptions = [
-        'attributes' => 'allowfullscreen="allowfullscreen" style="height: 600px; height: 70vh"',
+        'attributes' => 'allowfullscreen="allowfullscreen" style="height: 600px; height: 70vh; border: 1px solid lightgray;"',
     ];
 
     /**
