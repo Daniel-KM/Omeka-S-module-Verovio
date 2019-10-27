@@ -19,6 +19,11 @@ return [
             'mxl' => 'verovio',
         ],
     ],
+    'form_elements' => [
+        'invokables' => [
+            Form\SiteSettingsFieldset::class => Form\SiteSettingsFieldset::class,
+        ],
+    ],
     'translator' => [
         'translation_file_patterns' => [
             [
@@ -30,5 +35,8 @@ return [
         ],
     ],
     'verovio' => [
+        'site_settings' => [
+            'verovio_template' => 'app',
+        ],
     ],
 ];

@@ -13,13 +13,11 @@ class Verovio implements RendererInterface
     const PARTIAL_NAME = 'common/renderer/verovio';
 
     /**
-     * These options are used only when the player is called outside of a site
-     * or when the site settings are not set.
-     *
      * @var array
      */
     protected $defaultOptions = [
         'attributes' => 'allowfullscreen="allowfullscreen" style="height: 600px; height: 70vh; border: 1px solid lightgray;"',
+        'template' => 'app',
     ];
 
     /**
@@ -35,17 +33,29 @@ class Verovio implements RendererInterface
     public function render(PhpRenderer $view, MediaRepresentation $media, array $options = [])
     {
         // Omeka 1.2.0 doesn't support $view->status().
-        $isAdmin = $view->params()->fromRoute('__ADMIN__');
-        if ($isAdmin) {
-            $options['attributes'] = $this->defaultOptions['attributes'];
-        } else {
+        $isPublic = $view->params()->fromRoute('__SITE__');
+        if ($isPublic) {
+            $siteSetting = $view->plugin('siteSetting');
             $options['attributes'] = isset($options['attributes'])
                 ? $options['attributes']
-                : $view->siteSetting('verovio_attributes', $this->defaultOptions['attributes']);
+                : $siteSetting('verovio_attributes', $this->defaultOptions['attributes']);
+            $template = isset($options['template'])
+                ? $options['template']
+                : $siteSetting('verovio_template', $this->defaultOptions['template']);
+        } else {
+            $options['attributes'] = $this->defaultOptions['attributes'];
+            $template = $this->defaultOptions['template'];
         }
 
-        $template = isset($options['template']) ? $options['template'] : self::PARTIAL_NAME;
+        $templates = [
+            'app' => 'common/renderer/verovio',
+            'custom' => 'common/renderer/verovio-toolkit',
+        ];
+        $template = isset($templates[$template])
+            ? $templates[$template]
+            : self::PARTIAL_NAME;
         unset($options['template']);
+
         return $view->partial($template, [
             'media' => $media,
             'options' => $options,

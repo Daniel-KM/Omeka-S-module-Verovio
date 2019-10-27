@@ -39,6 +39,8 @@ if (!class_exists(\Generic\AbstractModule::class)) {
 
 use Generic\AbstractModule;
 use Omeka\Module\Exception\ModuleCannotInstallException;
+use Zend\EventManager\Event;
+use Zend\EventManager\SharedEventManagerInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 class Module extends AbstractModule
@@ -94,5 +96,29 @@ class Module extends AbstractModule
             $whitelist[] = 'xml';
         }
         $settings->set('extension_whitelist', $whitelist);
+    }
+
+    public function attachListeners(SharedEventManagerInterface $sharedEventManager)
+    {
+        $sharedEventManager->attach(
+            \Omeka\Form\SiteSettingsForm::class,
+            'form.add_elements',
+            [$this, 'handleSiteSettings']
+        );
+        $sharedEventManager->attach(
+            \Omeka\Form\SiteSettingsForm::class,
+            'form.add_input_filters',
+            [$this, 'handleSiteSettingsFilters']
+        );
+    }
+
+    public function handleSiteSettingsFilters(Event $event)
+    {
+        $inputFilter = $event->getParam('inputFilter');
+        $inputFilter->get('verovio')
+            ->add([
+                'name' => 'verovio_template',
+                'required' => false,
+            ]);
     }
 }
