@@ -41,7 +41,8 @@
     "slowprog/composer-copy-file": "^0.3",
     "rism-ch/verovio": "*",
     "rism-ch/verovio-toolkit-wasm": "*",
-    "rism-ch/verovio-wasm": "*"
+    "rism-ch/verovio-wasm": "*",
+    "twbs/bootstrap": "^4.3"
   },
   "scripts": {
     "post-install-cmd": [
@@ -55,7 +56,8 @@
     "copy-file": {
       "vendor/asset/rism-ch/verovio/verovio-toolkit.js": "asset/vendor/verovio/js/",
       "vendor/asset/rism-ch/verovio-toolkit-wasm/verovio-toolkit-wasm.js": "asset/vendor/verovio/js/",
-      "vendor/asset/rism-ch/verovio-wasm/verovio.wasm": "asset/vendor/verovio/js/"
+      "vendor/asset/rism-ch/verovio-wasm/verovio.wasm": "asset/vendor/verovio/js/",
+      "vendor/asset/twbs/bootstrap/dist": "asset/vendor/bootstrap/"
     }
   }
 }

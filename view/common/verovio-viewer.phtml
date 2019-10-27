@@ -15,9 +15,7 @@ $source = isset($options['source']) ? $options['source'] : $resource->originalUr
 
 $this->headLink()
     // Latest compiled and minified CSS.
-    ->appendStylesheet($assetUrl('vendor/bootstrap-3.3/css/bootstrap.min.css', 'Verovio'))
-    // Optional theme.
-    ->appendStylesheet($assetUrl('vendor/bootstrap-3.3/css/bootstrap-theme.min.css', 'Verovio'))
+    ->appendStylesheet($assetUrl('vendor/bootstrap/css/bootstrap.min.css', 'Verovio'))
     // Syntax highlighting CSS.
     ->appendStylesheet($assetUrl('vendor/verovio/css/syntax.css', 'Verovio'))
     // Custom CSS.
@@ -29,11 +27,9 @@ $this->headLink()
 ;
 
 $this->headScript()
-    // jQuery (necessary for Bootstrap's JavaScript plugins): Verovio uses jQuery > 1.9 and < 3.0.
-    // ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
-    ->appendFile($assetUrl('vendor/jquery/jquery.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
     ->appendFile($assetUrl('vendor/jquery/jquery.touchSwipe.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
-    ->appendFile($assetUrl('vendor/bootstrap-3.3/js/bootstrap.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/bootstrap/js/bootstrap.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     ->appendFile($assetUrl('vendor/bootstrap-contextmenu/bootstrap-contextmenu.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     ->appendFile($assetUrl('vendor/filesaver/FileSaver.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     ->appendFile($assetUrl('vendor/d3/d3.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
