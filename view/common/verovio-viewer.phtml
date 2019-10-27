@@ -93,7 +93,7 @@ $this->headScript()
         </div>
         <div class="row sidebar-row">
             <div class="col-12">
-                <button class="btn btn-secondary btn-sm float-left popover-btn" type="button" data-container="body" data-toggle="popover" data-placement="left" data-content="<?= $escape($translate('On mobile devices, you can swipe left or right to change page and tap or double tap to zoom-in or zoom-out. On desktops, you can use [ctrl+] left or right arrows and +/- keys.')) ?>">
+                <button class="btn btn-outline-secondary btn-sm float-left popover-btn" type="button" data-container="body" data-toggle="popover" data-placement="left" data-content="<?= $escape($translate('On mobile devices, you can swipe left or right to change page and tap or double tap to zoom-in or zoom-out. On desktops, you can use [ctrl+] left or right arrows and +/- keys.')) ?>">
                     <span class="glyphicon glyphicon-question-sign"/>
                 </button>
             </div>
@@ -105,19 +105,19 @@ $this->headScript()
                 </p>
                 <div class="input-group input-group-sm" style="width: 20px;">
                     <span class="input-group-btn">
-                        <button id="first-page-button" class="btn btn-secondary" type="button">
+                        <button id="first-page-button" class="btn btn-outline-secondary" type="button">
                             <span class="glyphicon glyphicon-fast-backward"/>
                         </button>
-                        <button id="prev-page-button" class="btn btn-secondary" type="button">
+                        <button id="prev-page-button" class="btn btn-outline-secondary" type="button">
                             <span class="glyphicon glyphicon-backward"/>
                         </button>
                     </span>
                     <input id="jump-text" type="text" class="form-control" placeholder="0" style="width: 45px !important;"/>
                     <span class="input-group-btn">
-                        <button id="next-page-button" class="btn btn-secondary" type="button">
+                        <button id="next-page-button" class="btn btn-outline-secondary" type="button">
                             <span class="glyphicon glyphicon-forward"/>
                         </button>
-                        <button id="last-page-button" class="btn btn-secondary" type="button">
+                        <button id="last-page-button" class="btn btn-outline-secondary" type="button">
                             <span class="glyphicon glyphicon-fast-forward"/>
                         </button>
                     </span>
@@ -135,13 +135,13 @@ $this->headScript()
                 </p>
                 <div class="input-group input-group-sm" style="width: 20px;">
                     <span class="input-group-btn">
-                        <button id="zoom-out-button" class="btn btn-secondary" type="button">
+                        <button id="zoom-out-button" class="btn btn-outline-secondary" type="button">
                             <span class="glyphicon glyphicon-zoom-out">
                         </span></button>
                     </span>
                     <input id="zoom-text" type="text" class="form-control" style="width:60px !important;" placeholder="100%"/>
                     <span class="input-group-btn">
-                        <button id="zoom-in-button" class="btn btn-secondary" type="button">
+                        <button id="zoom-in-button" class="btn btn-outline-secondary" type="button">
                             <span class="glyphicon glyphicon-zoom-in"/>
                         </button>
                     </span>
@@ -199,7 +199,7 @@ $this->headScript()
                         <input id="mei-files" type="file" name="file" style="margin: 4px 0px 8px 0px;"/>
                     </div>
                     <div class="col-lg-12">
-                        <button type="submit" id="submit-btn" class="btn btn-secondary btn-sm popover-btn" data-container="body" data-toggle="popover" data-placement="left" data-content="<?= $escape($translate('Click to display the MEI file!')) ?>" data-trigger="manual"><?= $translate('Render') ?></button>
+                        <button type="submit" id="submit-btn" class="btn btn-outline-secondary btn-sm popover-btn" data-container="body" data-toggle="popover" data-placement="left" data-content="<?= $escape($translate('Click to display the MEI file!')) ?>" data-trigger="manual"><?= $translate('Render') ?></button>
                     </div>
                 </div>
 
@@ -227,13 +227,13 @@ $this->headScript()
         <button type="button" class="navbar-toggler sidebar-toggle" data-toggle="offcanvas" data-target=".sidebar-nav">&#x2630;</button>
 
         <div class="btn-group">
-            <button id="pdf-button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#pdfDialog" type="button" data-loading-text="<?= $escape($translate('Generating PDF…')) ?>" style="display: none;">
+            <button id="pdf-button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#pdfDialog" type="button" data-loading-text="<?= $escape($translate('Generating PDF…')) ?>" style="display: none;">
                 <span class="hidden-xsd-none d-sm-block"><?= $translate('PDF') ?></span> <span class="glyphicon glyphicon-book"/>
             </button>
-            <button id="options-button" class="btn btn-sm btn-secondary hidden-xsd-none d-sm-block" data-toggle="modal" data-target="#optionDialog" type="button" data-loading-text="<?= $escape($translate('Style editor…')) ?>" style="display: none;">
+            <button id="options-button" class="btn btn-sm btn-outline-secondary hidden-xsd-none d-sm-block" data-toggle="modal" data-target="#optionDialog" type="button" data-loading-text="<?= $escape($translate('Style editor…')) ?>" style="display: none;">
                 <span class="hidden-xsd-none d-sm-block"><?= $translate('Options') ?></span> <span class="glyphicon glyphicon-wrench"/>
             </button>
-            <button id="play-button" class="btn btn-sm btn-secondary" type="button" style="display: none;" title="<?= $translate('Midi player') ?>">
+            <button id="play-button" class="btn btn-sm btn-outline-secondary" type="button" style="display: none;" title="<?= $translate('Midi player') ?>">
                 <span class="glyphicon glyphicon-volume-up"/>
             </button>
         </div>
@@ -243,8 +243,8 @@ $this->headScript()
         </button>
 
         <div class="btn-group">
-            <button id="fullscreen-button" class="btn btn-secondary" type="button" title="<?= $escape($translate('Full screen view')) ?>">
-                <span class="glyphicon glyphicon-fullscreen"/>
+            <button id="fullscreen-button" class="btn btn-outline-secondary" type="button" title="<?= $escape($translate('Full screen view')) ?>">
+                <span class="fas fa-expand-arrows-alt"/>
             </button>
         </div>
 
@@ -295,7 +295,7 @@ $this->headScript()
                 <div class="alert alert-warning" style="text-align:left;">
                     <strong><?= $translate('Warning!') ?></strong> <?= $translate('This is an experimental feature and it can take some time.') ?>
                 </div>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $translate('Cancel') ?></button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><?= $translate('Cancel') ?></button>
                 <button type="button" id="pdfOK" class="btn btn-primary"><?= $translate('OK') ?></button>
             </div>
         </div>
@@ -314,8 +314,8 @@ $this->headScript()
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="optionDefault" class="btn btn-secondary"><?= $translate('Reset to default') ?></button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $translate('Cancel') ?></button>
+                <button type="button" id="optionDefault" class="btn btn-outline-secondary"><?= $translate('Reset to default') ?></button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal"><?= $translate('Cancel') ?></button>
                 <button type="button" id="optionOK" class="btn btn-primary"><?= $translate('OK') ?></button>
             </div>
         </div>
