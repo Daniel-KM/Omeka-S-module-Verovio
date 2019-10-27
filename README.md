@@ -81,6 +81,13 @@ are passed directly to the template:
     echo $media->render($options);
 ```
 
+Furthermore, a view helper is available to render any url anywhere:
+
+```php
+    $options = ['source' => 'https://example.org/file.mei'];
+    echo $this->verovio(null, $options);
+```
+
 
 Warning
 -------

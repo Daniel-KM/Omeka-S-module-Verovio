@@ -19,6 +19,11 @@ return [
             'mxl' => 'verovio',
         ],
     ],
+    'view_helpers' => [
+        'invokables' => [
+            'verovio' => View\Helper\Verovio::class,
+        ],
+    ],
     'form_elements' => [
         'invokables' => [
             Form\SiteSettingsFieldset::class => Form\SiteSettingsFieldset::class,

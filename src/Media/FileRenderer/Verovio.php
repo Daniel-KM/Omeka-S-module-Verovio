@@ -23,6 +23,8 @@ class Verovio implements RendererInterface
     /**
      * Render a xml-mei file via verovio library.
      *
+     * @todo Factorize with the view helper.
+     *
      * @param PhpRenderer $view,
      * @param MediaRepresentation $media
      * @param array $options These options are managed for sites:

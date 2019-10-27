@@ -1,15 +1,17 @@
 <?php
 /**
  * @var \Zend\View\Renderer\PhpRenderer $this
- * @var \Omeka\Api\Representation\MediaRepresentation $media
+ * @var \Omeka\Api\Representation\AbstractResourceEntityRepresentation $resource
  * @var array $options
  */
 
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $assetUrl = $this->plugin('assetUrl');
+$hyperlink = $this->plugin('hyperlink');
 
 $baseUrl = $this->serverUrl() . $assetUrl('vendor/verovio/js/', 'Verovio', false, false);
+$source = isset($options['source']) ? $options['source'] : $resource->originalUrl();
 
 $this->headLink()
     // Latest compiled and minified CSS.
@@ -54,7 +56,7 @@ $this->headScript()
 ;
 ?>
 
-<div id="verovio" class="verovio" data-base-url="<?= $baseUrl ?>" data-url="<?= $media->originalUrl() ?>">
+<div id="verovio" class="verovio" data-base-url="<?= $escape($baseUrl) ?>" data-url="<?= $escape($source) ?>">
     <?= $translate('The viewer is loading…') ?>
 </div>
 
@@ -358,8 +360,7 @@ $this->headScript()
 
 <noscript>
     <p>
-        <?= $this->escapeHtml($translate('This browser does not support javascript.')) ?>
-        <?= sprintf($translate('You may %sdownload it%s to view it offline.'), '<a href="' . $media->originalUrl() . '">', '</a>') ?>
-        <img src="<?= $media->thumbnailUrl('large') ?>" height="600px"/>
+        <?= $translate('This browser does not support javascript.') ?>
+        <?= sprintf($translate('You may %sdownload it%s to view it offline.'), '<a href="' . $escape($resource->originalUrl()) . '">', '</a>') ?>
     </p>
 </noscript>

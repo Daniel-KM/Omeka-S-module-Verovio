@@ -1,0 +1,103 @@
+<?php
+
+namespace Verovio\View\Helper;
+
+use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
+use Zend\View\Helper\AbstractHelper;
+
+class Verovio extends AbstractHelper
+{
+    /**
+     * @var array
+     */
+    protected $defaultOptions = [
+        'attributes' => 'allowfullscreen="allowfullscreen" style="height: 600px; height: 70vh; border: 1px solid lightgray;"',
+        'template' => 'app',
+    ];
+
+    /**
+     * Get the Verovio Viewer for the provided resource.
+     *
+     * Proxies to {@link render()}.
+     *
+     * @param AbstractResourceEntityRepresentation|null $resource
+     * @param array $options
+     * @return string Html string corresponding to the viewer.
+     */
+    public function __invoke($resource, $options = [])
+    {
+        // Prepare the url of the source for a dynamic collection.
+        if (is_array($resource)) {
+            return '';
+        }
+
+        if (isset($options['source'])) {
+            return $this->render($resource, $options);
+        }
+
+        $resourceName = $resource->resourceName();
+        if ($resourceName === 'item') {
+            $medias = $resource->media();
+            // Get the media that is readable by the viewer.
+            foreach ($medias as $media) {
+                if ($media->renderer() === 'verovio') {
+                    $options['source'] = $media->originalUrl();
+                    return $this->render($resource, $options);
+                }
+            }
+            return '';
+        }
+
+        $media = $resource->primaryMedia();
+        if ($media && $media->renderer() !== 'verovio') {
+            $options['source'] = $media->originalUrl();
+            return $this->render($resource, $options);
+        }
+
+        return '';
+    }
+
+    /**
+     * Render a verovio viewer for a resource, according to options.
+     *
+     * @todo Factorize with the media renderer.
+     *
+     * @param AbstractResourceEntityRepresentation|null $resource
+     * @param array $options It must contains the source url.
+     * @return string Html code.
+     */
+    protected function render($resource, array $options = [])
+    {
+        $view = $this->getView();
+
+        // Omeka 1.2.0 doesn't support $view->status().
+        $isPublic = $view->params()->fromRoute('__SITE__');
+        if ($isPublic) {
+            $siteSetting = $view->plugin('siteSetting');
+            $options['attributes'] = isset($options['attributes'])
+                ? $options['attributes']
+                : $siteSetting('verovio_attributes', $this->defaultOptions['attributes']);
+            $template = isset($options['template'])
+                ? $options['template']
+                : $siteSetting('verovio_template', $this->defaultOptions['template']);
+        } else {
+            $options['attributes'] = $this->defaultOptions['attributes'];
+            $template = $this->defaultOptions['template'];
+        }
+
+        $templates = [
+            'app' => 'common/renderer/verovio',
+            'bootstrap_3' => 'common/renderer/verovio-mei-viewer',
+            'custom' => 'common/renderer/verovio-toolkit',
+        ];
+        $template = isset($templates[$template])
+            ? $templates[$template]
+            : \Verovio\Media\FileRenderer\Verovio::PARTIAL_NAME;
+        unset($options['template']);
+
+        return $view->partial($template, [
+            'resource' => $resource,
+            'options' => $options,
+        ]);
+    }
+}
