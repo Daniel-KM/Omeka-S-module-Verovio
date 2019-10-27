@@ -31,28 +31,28 @@ $this->headLink()
 $this->headScript()
     // jQuery (necessary for Bootstrap's JavaScript plugins): Verovio uses jQuery > 1.9 and < 3.0.
     // ->prependFile($assetUrl('vendor/jquery/jquery.min.js', 'Omeka'))
-    ->appendFile($assetUrl('vendor/jquery/jquery.min.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/jquery/jquery.touchSwipe.min.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/bootstrap/js/bootstrap.min.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/bootstrap-contextmenu/bootstrap-contextmenu.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/filesaver/FileSaver.min.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/d3/d3.min.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/jquery/jquery.cookie.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/jsonform/jsonform.js', 'Verovio'))
+    ->appendFile($assetUrl('vendor/jquery/jquery.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/jquery/jquery.touchSwipe.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/bootstrap/js/bootstrap.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/bootstrap-contextmenu/bootstrap-contextmenu.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/filesaver/FileSaver.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/d3/d3.min.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/jquery/jquery.cookie.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/jsonform/jsonform.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     // Verovio.
     // Use this to increase the memory for Verovio.
-    // ->appendFile($assetUrl('vendor/verovio/js/verovio-memory.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/verovio/js/verovio-toolkit.js', 'Verovio'))
+    // ->appendFile($assetUrl('vendor/verovio/js/verovio-memory.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/verovio/js/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     // Midi-player for playback in the editor.
-    ->appendFile($assetUrl('vendor/verovio/js/midi-player/wildwebmidi.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/verovio/js/midi-player/midiplayer.js', 'Verovio'))
+    ->appendFile($assetUrl('vendor/verovio/js/midi-player/wildwebmidi.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/verovio/js/midi-player/midiplayer.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     // Pdf kit.
-    ->appendFile($assetUrl('vendor/verovio/js/pdfkit/blobstream.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/verovio/js/pdfkit/pdfkit.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/verovio/js/pdfkit/source.js', 'Verovio'))
-    ->appendFile($assetUrl('vendor/verovio/js/pdfkit/vrv-ttf.js', 'Verovio'))
+    ->appendFile($assetUrl('vendor/verovio/js/pdfkit/blobstream.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/verovio/js/pdfkit/pdfkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/verovio/js/pdfkit/source.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($assetUrl('vendor/verovio/js/pdfkit/vrv-ttf.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
     // Init and custom for Omeka.
-    ->appendFile($assetUrl('js/verovio-mei-viewer.js', 'Verovio'))
+    ->appendFile($assetUrl('js/verovio-mei-viewer.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
 ;
 ?>
 
