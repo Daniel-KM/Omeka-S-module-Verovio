@@ -51,13 +51,13 @@ $this->headScript()
 ;
 ?>
 
-    <div id="overlay">
-        Downloading ...
-    </div>
+<div id="overlay">
+    Downloading ...
+</div>
 
-    <div class="row-offcanvas row-offcanvas-right">
+<div class="row-offcanvas row-offcanvas-right">
 
-        <script type="text/javascript">
+<script type="text/javascript">
 //<![CDATA[
     var vrvToolkit = new verovio.toolkit();
     var page = 1;
@@ -96,15 +96,15 @@ $this->headScript()
         pageHeight = calc_page_height();
         pageWidth = calc_page_width();
         options = {
-                    adjustPageHeight: "true",
-                    breaks: "auto",
-                    inputFormat: format,
-                    mmOutput: "false",
-                    noFooter: "true",
-                    pageHeight: pageHeight,
-                    pageWidth: pageWidth,
-                    scale: zoom
-                };
+            adjustPageHeight: "true",
+            breaks: "auto",
+            inputFormat: format,
+            mmOutput: "false",
+            noFooter: "true",
+            pageHeight: pageHeight,
+            pageWidth: pageWidth,
+            scale: zoom
+        };
 
         if (customOptions !== undefined) {
             localStorage['customOptions'] = JSON.stringify(customOptions);
@@ -113,7 +113,6 @@ $this->headScript()
             for(var key in options) mergedOptions[key] = options[key];
             options = mergedOptions;
         }
-
 
         //console.log( options );
         vrvToolkit.setOptions( options );
@@ -443,13 +442,13 @@ $this->headScript()
         doc.registerFont('VerovioText',buffer);
 
         pdfOptions = {
-                    adjustPageHeight: false,
-                    breaks: "auto",
-                    mmOutput: true,
-                    noFooter: false,
-                    pageHeight: pdfHeight,
-                    pageWidth: pdfWidth,
-                    scale: 100
+            adjustPageHeight: false,
+            breaks: "auto",
+            mmOutput: true,
+            noFooter: false,
+            pageHeight: pdfHeight,
+            pageWidth: pdfWidth,
+            scale: 100
         }
 
         vrvToolkit.setOptions(pdfOptions);
@@ -497,7 +496,6 @@ $this->headScript()
         </div>
     </div>
 </div>
-
 
 <!-- sidebar -->
 <div class="sidebar-offcanvas sidebar-right" id="sidebar" role="navigation">
@@ -652,7 +650,8 @@ $this->headScript()
                     </div>
                 </div>
 
-                <!--><div id="log_panel" style="display: none">
+                <!--
+                <div id="log_panel" style="display: none">
                     <hr class="panel"/>
                     <p id="log_p"></p>
                 </div>
@@ -755,110 +754,109 @@ $this->headScript()
             </div>
             <div class="modal-body" id="optionDialogContent">
                 <div id="option-div">
-</div>
-<script type="text/javascript">
-//<![CDATA[
-    options = vrvToolkit.getAvailableOptions();
+                </div>
+                <script type="text/javascript">
+                //<![CDATA[
+                    options = vrvToolkit.getAvailableOptions();
 
-    var ul = $("<ul class='nav nav-tabs' role='tablist'></ul>");
-    $('#option-div').append(ul);
+                    var ul = $("<ul class='nav nav-tabs' role='tablist'></ul>");
+                    $('#option-div').append(ul);
 
-    var form = $("<form class='form-horizontal' id='option-form'></form>");
-    $('#option-div').append(form);
-    var tab_content = $("<div class='tab-content'></div>");
-    form.append(tab_content);
+                    var form = $("<form class='form-horizontal' id='option-form'></form>");
+                    $('#option-div').append(form);
+                    var tab_content = $("<div class='tab-content'></div>");
+                    form.append(tab_content);
 
-    var i = 0;
-    for (grp in options.groups) {
-        var li = $("<li role='presentation'></li>");
-        ul.append(li);
-        if (i == 0) {
-            li.attr("class", "active");
-        }
+                    var i = 0;
+                    for (grp in options.groups) {
+                        var li = $("<li role='presentation'></li>");
+                        ul.append(li);
+                        if (i == 0) {
+                            li.attr("class", "active");
+                        }
 
-        var a = $("<a></a>").attr("href", "#" + grp).attr("aria-controls", grp).attr("role", "tab").attr("data-toggle", "tab");
-        li.append(a);
-        a.append(options.groups[grp].name);
+                        var a = $("<a></a>").attr("href", "#" + grp).attr("aria-controls", grp).attr("role", "tab").attr("data-toggle", "tab");
+                        li.append(a);
+                        a.append(options.groups[grp].name);
 
-        var tab_panel = $("<div role='tabpanel'></div>");
-        tab_content.append(tab_panel);
-        if (i == 0) {
-            tab_panel.attr("class", "tab-pane active panel-body");
-        }
-        else {
-            tab_panel.attr("class", "tab-pane panel-body");
-        }
-        tab_panel.attr("id", grp);
+                        var tab_panel = $("<div role='tabpanel'></div>");
+                        tab_content.append(tab_panel);
+                        if (i == 0) {
+                            tab_panel.attr("class", "tab-pane active panel-body");
+                        }
+                        else {
+                            tab_panel.attr("class", "tab-pane panel-body");
+                        }
+                        tab_panel.attr("id", grp);
 
+                        for (opt in options.groups[grp].options) {
 
-        for (opt in options.groups[grp].options) {
+                            var option = options.groups[grp].options[opt];
 
-            var option = options.groups[grp].options[opt];
+                            var form_group = $("<div class='form-group'></div>");
+                            tab_panel.append(form_group);
 
-            var form_group = $("<div class='form-group'></div>");
-            tab_panel.append(form_group);
+                            var label = $("<label class='col-sm-3 control-label'></label>");
+                            form_group.append(label);
+                            label.attr("for", opt);
+                            label.append(option.title);
 
-            var label = $("<label class='col-sm-3 control-label'></label>");
-            form_group.append(label);
-            label.attr("for", opt);
-            label.append(option.title);
+                            var input_div = $("<div class='col-sm-3'></div>");
+                            form_group.append(input_div);
 
-            var input_div = $("<div class='col-sm-3'></div>");
-            form_group.append(input_div);
+                            if ((option.type == "double") || (option.type == "int") || (option.type == "std::string") || (option.type == "array")) {
 
-            if ((option.type == "double") || (option.type == "int") || (option.type == "std::string") || (option.type == "array")) {
+                                var input = $("<input class='form-control'></input>");
+                                input_div.append(input);
+                                input.attr("name", opt);
 
-                var input = $("<input class='form-control'></input>");
-                input_div.append(input);
-                input.attr("name", opt);
+                                if ((option.type == "double") || (option.type == "int")) {
+                                    input.attr("type", "number");
+                                    input.attr("min", option.min);
+                                    input.attr("max", option.max);
+                                    if (option.type == "double") {
+                                        input.attr("step", "0.05");
+                                    }
+                                    else {
+                                        input.attr("step", "1");
+                                    }
+                                }
+                                else {
+                                    input.attr("type", "text");
+                                }
+                            }
+                            else if (option.type == "std::string-list") {
+                                var select = $("<select class='form-control'></select>");
+                                input_div.append(select);
+                                select.attr("name", opt);
 
-                if ((option.type == "double") || (option.type == "int")) {
-                    input.attr("type", "number");
-                    input.attr("min", option.min);
-                    input.attr("max", option.max);
-                    if (option.type == "double") {
-                        input.attr("step", "0.05");
+                                for (v in option.values) {
+                                    var opt_select = $("<option></option>");
+                                    select.append(opt_select);
+                                    opt_select.attr("value", option.values[v]);
+                                    opt_select.append(option.values[v]);
+                                }
+                            }
+                            else if (option.type == "bool") {
+                                var input = $("<input class='form-control' style='width: auto !important;' type='checkbox'></input>");
+                                input_div.append(input);
+                                input.attr("name", opt);
+                            }
+
+                            var help_div = $("<div class='col-sm-6'></div>");
+                            form_group.append(help_div);
+
+                            var help_p = $("<p class='help-block'></p>");
+                            help_div.append(help_p);
+                            help_p.append().text(option.description).html();
+
+                        }
+
+                        i = i + 1;
+
                     }
-                    else {
-                        input.attr("step", "1");
-                    }
-                }
-                else {
-                    input.attr("type", "text");
-                }
-            }
-            else if (option.type == "std::string-list") {
-                var select = $("<select class='form-control'></select>");
-                input_div.append(select);
-                select.attr("name", opt);
-
-                for (v in option.values) {
-                    var opt_select = $("<option></option>");
-                    select.append(opt_select);
-                    opt_select.attr("value", option.values[v]);
-                    opt_select.append(option.values[v]);
-                }
-            }
-            else if (option.type == "bool") {
-                var input = $("<input class='form-control' style='width: auto !important;' type='checkbox'></input>");
-                input_div.append(input);
-                input.attr("name", opt);
-            }
-
-            var help_div = $("<div class='col-sm-6'></div>");
-            form_group.append(help_div);
-
-            var help_p = $("<p class='help-block'></p>");
-            help_div.append(help_p);
-            help_p.append().text(option.description).html();
-
-        }
-
-        i = i + 1;
-
-    }
-//]]>
-</script>
+                //]]>
+                </script>
 
             </div>
             <div class="modal-footer">
@@ -1051,18 +1049,17 @@ $this->headScript()
 //]]>
 </script>
 
+</div>
 
-    </div>
-
-    <script type="text/javascript">
-        //<![CDATA[
-        $(document).ready(function() {
-            $('[data-toggle=offcanvas]').click(function() {
-                $('.row-offcanvas').toggleClass('active');
-            });
+<script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function() {
+        $('[data-toggle=offcanvas]').click(function() {
+            $('.row-offcanvas').toggleClass('active');
         });
-        //]]>
-    </script>
+    });
+    //]]>
+</script>
 
 <noscript>
     <p>
