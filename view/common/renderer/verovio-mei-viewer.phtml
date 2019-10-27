@@ -1,0 +1,17 @@
+<?php
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @var \Omeka\Api\Representation\MediaRepresentation $media
+ * @var array $options
+ */
+
+$translate = $this->plugin('translate');
+?>
+
+<noscript>
+    <p>
+        <?= $this->escapeHtml($translate('This browser does not support javascript.')) ?>
+        <?= sprintf($translate('You may %sdownload it%s to view it offline.'), '<a href="' . $media->originalUrl() . '">', '</a>') ?>
+        <img src="<?= $media->thumbnailUrl('large') ?>" height="600px"/>
+    </p>
+</noscript>

@@ -49,6 +49,7 @@ class Verovio implements RendererInterface
 
         $templates = [
             'app' => 'common/renderer/verovio',
+            'web' => 'common/renderer/verovio-mei-viewer',
             'custom' => 'common/renderer/verovio-toolkit',
         ];
         $template = isset($templates[$template])
