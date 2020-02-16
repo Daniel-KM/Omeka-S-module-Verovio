@@ -61,7 +61,7 @@ class Module extends AbstractModule
 
     protected function postInstall()
     {
-        $this->updateWhitelists();
+        $this->updateWhitelist();
     }
 
     protected function updateWhitelist()
