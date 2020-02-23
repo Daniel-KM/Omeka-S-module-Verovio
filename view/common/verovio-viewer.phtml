@@ -5,6 +5,8 @@
  * @var array $options
  */
 
+// Updated Verovio viewer (based on Bootsrap 4.3).
+
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $assetUrl = $this->plugin('assetUrl');
@@ -211,7 +213,7 @@ $this->headScript()
                     <strong><?= $translate('Warning!') ?></strong> <?= $translate('This is an experimental feature and it can take some time.') ?>
                 </div>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= $translate('Cancel') ?></button>
-                <button type="button" class="btn btn-primary"><?= $translate('OK') ?></button>
+                <button type="button" id="pdfOK" class="btn btn-primary"><?= $translate('OK') ?></button>
             </div>
         </div>
     </div>
