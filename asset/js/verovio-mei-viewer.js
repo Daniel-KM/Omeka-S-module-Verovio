@@ -140,6 +140,15 @@ $( document ).ready(function() {
         $("#svg_output").html(svg);
 
         adjust_page_height();
+
+        ////////////////////////////////////////
+        /* Bind a on click event to each note */
+        ////////////////////////////////////////
+        $(".note").click(function() {
+            var id = $(this).attr("id");
+            var time = vrvToolkit.getTimeForElement(id);
+            $("#player").midiPlayer.seek(time);
+        });
     };
 
     function next_page() {
