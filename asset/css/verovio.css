@@ -50,4 +50,8 @@
     .sidebar-toggle {
        display: inline-block !important;
     }
+
+    #svg_output{
+        padding-bottom: 20px;
+    }
 }

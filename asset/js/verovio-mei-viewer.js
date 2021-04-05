@@ -1,4 +1,5 @@
 /* Original mei-viewer javascript adapted to comply with bootstrap 3 and bootstrap 4. */
+/* Some code from https://github.com/marenzio/marenzio.github.io/blob/36355d31a606763674c094862d40f20d98704ead/_layouts/edition.html#L176-L208 */
 
 $( document ).ready(function() {
 
@@ -248,16 +249,15 @@ $( document ).ready(function() {
     }
 
     function adjust_page_height() {
-        // adjust the height of the panel
-        if ( $('#svg_panel svg') ) {
-            zoomed_height = pageHeight * zoom / 100;
-            if ( zoomed_height < $('#svg_panel svg').height() ) {
-                zoomed_height = $('#svg_panel svg').height();
-            }
-            $('#svg_output').height( zoomed_height ); // slighly more for making sure we have no scroll bar
-            //$('#svg_panel svg').height(pageHeight * zoom / 100 );
-            //$('#svg_panel svg').width(pageWidth * zoom / 100 );
-        }
+        // if ( $('#svg_panel svg') ) {
+        //     zoomed_height = pageHeight * zoom / 100;
+        //     if ( zoomed_height < $('#svg_panel svg').height() ) {
+        //         zoomed_height = $('#svg_panel svg').height();
+        //     }
+        //     $('#svg_output').height( zoomed_height ); // slighly more for making sure we have no scroll bar
+        //     $('#svg_panel svg').height(pageHeight * zoom / 100 );
+        //     $('#svg_panel svg').width(pageWidth * zoom / 100 );
+        // }
 
         // also update the zoom control
         $("#zoom-text").val(zoom + "%");
@@ -299,6 +299,86 @@ $( document ).ready(function() {
     function getParameterByName(name) {
         var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
         return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+    }
+
+    // highlight notes when click on text in critical apparatus
+    window.loadPageWithElement = function(xmlIds, type = ''){
+
+        $( ".modal").modal('hide');
+
+        // Store globals for highlighting
+        highlighted = xmlIds;
+        if (type !== '') {
+            highligtedType = " ." + type;
+        }
+        else {
+            highligtedType = "";
+        }
+
+        var ids = Array.from(new Set(xmlIds.split(" ")));
+        console.log(ids);
+        var elementPage = vrvToolkit.getPageWithElement( ids[0].substring(1) );
+        if (elementPage == 0) {
+            console.log(ids[0], "ID not found" );
+            return;
+        }
+        page = elementPage;
+        reloadPage();
+
+        // scroll
+        var a = d3.select(ids[0]);
+        if (!a.empty()) {
+            var y = (a[0][0].getBBox().y) * zoom / 1000; // 100 * 10 because of the def factor in SVG
+            $('#top-panel').scrollTo( parseInt( y - 50 ), 300, { axis:'y' } );
+        }
+
+        showHighlighted();
+
+    }
+
+    function showHighlighted() {
+        if (highlighted == "") {
+            return;
+        }
+        var ids = highlighted.split(" ");
+        var i;
+        for (i = 0; i < ids.length; i++) {
+            d3.selectAll( ids[i] + highligtedType ).style('filter', 'url(#highlighting)');
+        }
+    }
+
+    function reloadPage() {
+        load_page();
+        // highlightInlineApp();
+        showHighlighted();
+    };
+
+    // remember highlight for previous notes
+    function highlightInlineApp() {
+        d3.selectAll('.app-inline div, .app-inline-text div').each( function(selection) {
+            var s = d3.select(this);
+            if (!s.empty()) {
+                var type = "";
+                if (s.attr("data-type")) {
+                    type = " ." + s.attr("data-type");
+                }
+                ids = s.attr("data-corresp").split(" ");
+                var uniqueIds = Array.from(new Set(ids))
+                $.each( uniqueIds, function(i, id){
+                    var element = d3.select(id + type);
+                    if (!element.empty()) {
+                        if (i == 0) {
+                            element.attr("class", "highlight")
+                                .attr('data-content', s.html() )
+                                .style('filter', 'url(#highlighting)');
+                        } else {
+                            element.attr("class", "highlight")
+                                .style('filter', 'url(#highlighting)');
+                        }
+                    }
+                });
+            }
+        });
     }
 
     function play_midi() {
