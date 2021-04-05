@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Verovio\View\Helper;
 
-use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 use Laminas\View\Helper\AbstractHelper;
+use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
 class Verovio extends AbstractHelper
 {
@@ -90,12 +90,10 @@ class Verovio extends AbstractHelper
         $isPublic = $view->params()->fromRoute('__SITE__');
         if ($isPublic) {
             $siteSetting = $view->plugin('siteSetting');
-            $template = isset($options['template'])
-                ? $options['template']
-                : $siteSetting('verovio_template', $this->defaultOptions['template']);
-            $options['attributes'] = isset($options['attributes'])
-                ? $options['attributes']
-                : $this->defaultOptions['attributes'];
+            $template = $options['template']
+                ?? $siteSetting('verovio_template', $this->defaultOptions['template']);
+            $options['attributes'] = $options['attributes']
+                ?? $this->defaultOptions['attributes'];
         } else {
             $template = $this->defaultOptions['template'];
             $options['attributes'] = $this->defaultOptions['attributes'];

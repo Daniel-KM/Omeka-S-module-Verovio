@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 namespace Verovio\Media\FileRenderer;
 
+use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Representation\MediaRepresentation;
 use Omeka\Media\FileRenderer\RendererInterface;
-use Laminas\View\Renderer\PhpRenderer;
 
 class Verovio implements RendererInterface
 {
@@ -38,12 +38,10 @@ class Verovio implements RendererInterface
         $isPublic = $view->params()->fromRoute('__SITE__');
         if ($isPublic) {
             $siteSetting = $view->plugin('siteSetting');
-            $template = isset($options['template'])
-                ? $options['template']
-                : $siteSetting('verovio_template', $this->defaultOptions['template']);
-            $options['attributes'] = isset($options['attributes'])
-                ? $options['attributes']
-                : $this->defaultOptions['attributes'];
+            $template = $options['template']
+                ?? $siteSetting('verovio_template', $this->defaultOptions['template']);
+            $options['attributes'] = $options['attributes']
+                ?? $this->defaultOptions['attributes'];
         } else {
             $template = $this->defaultOptions['template'];
             $options['attributes'] = $this->defaultOptions['attributes'];

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * @author Daniel Berthereau
  * @license http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt
@@ -38,15 +38,15 @@ if (!class_exists(\Generic\AbstractModule::class)) {
 }
 
 use Generic\AbstractModule;
-use Omeka\Module\Exception\ModuleCannotInstallException;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
+use Omeka\Module\Exception\ModuleCannotInstallException;
 
 class Module extends AbstractModule
 {
     const NAMESPACE = __NAMESPACE__;
 
-    protected function preInstall()
+    protected function preInstall(): void
     {
         $js = __DIR__ . '/asset/vendor/verovio/js/verovio-toolkit.js';
         if (!file_exists($js)) {
@@ -59,12 +59,12 @@ class Module extends AbstractModule
         }
     }
 
-    protected function postInstall()
+    protected function postInstall(): void
     {
         $this->updateWhitelist();
     }
 
-    protected function updateWhitelist()
+    protected function updateWhitelist(): void
     {
         $settings = $this->getServiceLocator()->get('Omeka\Settings');
 
@@ -98,7 +98,7 @@ class Module extends AbstractModule
         $settings->set('extension_whitelist', $whitelist);
     }
 
-    public function attachListeners(SharedEventManagerInterface $sharedEventManager)
+    public function attachListeners(SharedEventManagerInterface $sharedEventManager): void
     {
         $sharedEventManager->attach(
             \Omeka\Form\SettingForm::class,
@@ -123,7 +123,7 @@ class Module extends AbstractModule
         );
     }
 
-    public function handleMainSettingsFilters(Event $event)
+    public function handleMainSettingsFilters(Event $event): void
     {
         $inputFilter = $event->getParam('inputFilter');
         $inputFilter->get('verovio')
@@ -133,7 +133,7 @@ class Module extends AbstractModule
             ]);
     }
 
-    public function handleSiteSettingsFilters(Event $event)
+    public function handleSiteSettingsFilters(Event $event): void
     {
         $inputFilter = $event->getParam('inputFilter');
         $inputFilter->get('verovio')

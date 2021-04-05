@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 namespace Verovio\Form;
 
 use Laminas\Form\Element;
@@ -6,7 +6,7 @@ use Laminas\Form\Fieldset;
 
 class VerovioFieldset extends Fieldset
 {
-    public function init()
+    public function init(): void
     {
         $this
             ->add([
