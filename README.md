@@ -29,7 +29,7 @@ If the module was installed from the source, rename the name of the folder of
 the module to `Verovio`, and go to the root module, and run:
 
 ```
-    composer install
+composer install --no-dev
 ```
 
 The next times:
@@ -116,7 +116,7 @@ your archives regularly so you can roll back if needed.
 Troubleshooting
 ---------------
 
-See online issues on the [module issues] page on GitHub.
+See online issues on the [module issues] page on GitLab.
 
 
 License
@@ -160,14 +160,14 @@ University of Applied Sciences and Arts, Basel Academy of Music, Academy of Musi
 [Schola Cantorum Basiliensis].
 
 
-[Verovio MEI Viewer]: https://github.com/Daniel-KM/Omeka-S-module-Verovio
+[Verovio MEI Viewer]: https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio
 [Verovio]: https://www.verovio.org
 [XML-MEI]: https://music-encoding.org
 [MusicXML]: https://w3c.github.io/musicxml/
 [Omeka S]: https://omeka.org/s
-[`Verovio.zip`]: https://github.com/Daniel-KM/Omeka-S-module-Verovio/releases
-[Next]: https://github.com/Daniel-KM/Omeka-S-module-Next
-[module issues]: https://github.com/Daniel-KM/Omeka-S-module-Verovio/issues
+[`Verovio.zip`]: https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/releases
+[Next]: https://gitlab.com/Daniel-KM/Omeka-S-module-Next
+[module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
 [FSF]: https://www.fsf.org
@@ -176,4 +176,4 @@ University of Applied Sciences and Arts, Basel Academy of Music, Academy of Musi
 [Fachhochschule Nordwestschweiz]: https://www.fhnw.ch
 [Schola Cantorum Basiliensis]: https://www.fhnw.ch/en/about-fhnw/schools/music/schola-cantorum-basiliensis
 [GitLab]: https://gitlab.com/Daniel-KM
-[Daniel-KM]: https://github.com/Daniel-KM "Daniel Berthereau"
+[Daniel-KM]: https://gitlab.com/Daniel-KM "Daniel Berthereau"
