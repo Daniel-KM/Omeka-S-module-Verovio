@@ -11,7 +11,7 @@ $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $assetUrl = $this->plugin('assetUrl');
 
-$source = isset($options['source']) ? $options['source'] : $resource->originalUrl();
+$source = $options['source'] ?? $resource->originalUrl();
 
 $this->headLink()
     ->appendStylesheet($assetUrl('css/verovio.css', 'Verovio'))

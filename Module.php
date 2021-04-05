@@ -69,32 +69,22 @@ class Module extends AbstractModule
         $settings = $this->getServiceLocator()->get('Omeka\Settings');
 
         $whitelist = $settings->get('media_type_whitelist', []);
-        $keys = [
+        $whitelist = array_values(array_unique(array_merge(array_values($whitelist), [
             'application/vnd.mei+xml',
             'application/vnd.recordare.musicxml',
             'image/svg+xml',
             'text/xml',
-        ];
-        foreach ($keys as $key) {
-            if (!in_array($key, $whitelist)) {
-                $whitelist[] = $key;
-            }
-        }
+        ])));
         $settings->set('media_type_whitelist', $whitelist);
 
         $whitelist = $settings->get('extension_whitelist', []);
-        $keys = [
+        $whitelist = array_values(array_unique(array_merge(array_values($whitelist), [
             'mei',
             'musicxml',
             'mxl',
             'svg',
             'xml',
-        ];
-        foreach ($keys as $key) {
-            if (!in_array($key, $whitelist)) {
-                $whitelist[] = $key;
-            }
-        }
+        ])));
         $settings->set('extension_whitelist', $whitelist);
     }
 

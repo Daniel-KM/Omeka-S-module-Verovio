@@ -34,14 +34,11 @@ class Verovio implements RendererInterface
      */
     public function render(PhpRenderer $view, MediaRepresentation $media, array $options = [])
     {
-        // Omeka 1.2.0 doesn't support $view->status().
-        $isPublic = $view->params()->fromRoute('__SITE__');
-        if ($isPublic) {
+        $status = $view->status();
+        if ($status->isSiteRequest()) {
             $siteSetting = $view->plugin('siteSetting');
-            $template = $options['template']
-                ?? $siteSetting('verovio_template', $this->defaultOptions['template']);
-            $options['attributes'] = $options['attributes']
-                ?? $this->defaultOptions['attributes'];
+            $template = $options['template'] ?? $siteSetting('verovio_template', $this->defaultOptions['template']);
+            $options['attributes'] = $options['attributes'] ?? $this->defaultOptions['attributes'];
         } else {
             $template = $this->defaultOptions['template'];
             $options['attributes'] = $this->defaultOptions['attributes'];
