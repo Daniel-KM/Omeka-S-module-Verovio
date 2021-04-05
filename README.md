@@ -19,7 +19,7 @@ install it, or use and init the source.
 
 * From the zip
 
-Download the last release [`Verovio.zip`] from the list of releases (the
+Download the last release [Verovio.zip] from the list of releases (the
 master does not contain the dependency), and uncompress it in the `modules`
 directory.
 
@@ -28,14 +28,14 @@ directory.
 If the module was installed from the source, rename the name of the folder of
 the module to `Verovio`, and go to the root module, and run:
 
-```
+```sh
 composer install --no-dev
 ```
 
 The next times:
 
-```
-    composer update
+```sh
+composer update --no-dev
 ```
 
 Then install it like any other Omeka module.
@@ -89,15 +89,15 @@ block "Media" to display it in any page. So just render the media, with possible
 options, that are passed directly to the template:
 
 ```php
-    echo $media->render($options);
+echo $media->render($options);
 ```
 
 A block layout is available too if needed for external urls. Furthermore, a view
 helper is available to render any url anywhere:
 
 ```php
-    $options = ['source' => 'https://example.org/file.mei'];
-    echo $this->verovio(null, $options);
+$options = ['source' => 'https://example.org/file.mei'];
+echo $this->verovio(null, $options);
 ```
 
 For a better integration in the sites, it's possible to customize the template:
@@ -153,7 +153,7 @@ Copyright
 
 Module Verovio for Omeka S:
 
-* Copyright Daniel Berthereau, 2019
+* Copyright Daniel Berthereau, 2019-2021
 
 First version of this module was built for [Fachhochschule Nordwestschweiz],
 University of Applied Sciences and Arts, Basel Academy of Music, Academy of Music,
@@ -165,7 +165,7 @@ University of Applied Sciences and Arts, Basel Academy of Music, Academy of Musi
 [XML-MEI]: https://music-encoding.org
 [MusicXML]: https://w3c.github.io/musicxml/
 [Omeka S]: https://omeka.org/s
-[`Verovio.zip`]: https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/releases
+[Verovio.zip]: https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/releases
 [Next]: https://gitlab.com/Daniel-KM/Omeka-S-module-Next
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
