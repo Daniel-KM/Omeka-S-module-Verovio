@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a36762e7c60b7addad233046e2b2d4be",
+    "content-hash": "07ff4158756dc2d5fe1fec118ad1a357",
     "packages": [
         {
             "name": "rism-ch/verovio-toolkit-wasm",
