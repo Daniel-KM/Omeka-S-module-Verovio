@@ -1,6 +1,10 @@
 Verovio MEI Viewer (module for Omeka S)
 =======================================
 
+> __New versions of this module and support for Omeka S version 3.0 and above
+> are available on [GitLab], which seems to respect users and privacy better
+> than the previous repository.__
+
 [Verovio MEI Viewer] is a module for [Omeka S] that integrates [Verovio], a
 music notation engraving library designed for the Music Encoding Initiative. It
 displays [XML-MEI] and [MusicXML] files attached to items, so the visitor can
@@ -118,7 +122,7 @@ See online issues on the [module issues] page on GitHub.
 License
 -------
 
-This module is published under the [CeCILL v2.1] licence, compatible with
+This module is published under the [CeCILL v2.1] license, compatible with
 [GNU/GPL] and approved by [FSF] and [OSI].
 
 In consideration of access to the source code and the rights to copy, modify and
@@ -171,4 +175,5 @@ University of Applied Sciences and Arts, Basel Academy of Music, Academy of Musi
 [LGPL]: https://www.gnu.org/licenses/lgpl.html
 [Fachhochschule Nordwestschweiz]: https://www.fhnw.ch
 [Schola Cantorum Basiliensis]: https://www.fhnw.ch/en/about-fhnw/schools/music/schola-cantorum-basiliensis
+[GitLab]: https://gitlab.com/Daniel-KM
 [Daniel-KM]: https://github.com/Daniel-KM "Daniel Berthereau"
