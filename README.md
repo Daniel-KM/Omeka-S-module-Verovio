@@ -15,7 +15,8 @@ Installation
 ------------
 
 The module uses an external js library [Verovio], so use the release zip to
-install it, or use and init the source.
+install it, or use and init the source. Furthermore, it is recommended to
+install the module [Next] (see below).
 
 * From the zip
 

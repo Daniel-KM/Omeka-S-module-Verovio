@@ -2,9 +2,9 @@
 /**
  * @author Daniel Berthereau
  * @license http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.txt
- * @copyright Daniel Berthereau, 2018-2019
+ * @copyright Daniel Berthereau, 2018-2021
  *
- * Copyright 2018-2019 Daniel Berthereau
+ * Copyright 2018-2021 Daniel Berthereau
  *
  * This software is governed by the CeCILL license under French law and abiding
  * by the rules of distribution of free software. You can use, modify and/or
@@ -41,6 +41,8 @@ use Generic\AbstractModule;
 use Laminas\EventManager\Event;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Omeka\Module\Exception\ModuleCannotInstallException;
+use Omeka\Mvc\Controller\Plugin\Messenger;
+use Omeka\Stdlib\Message;
 
 class Module extends AbstractModule
 {
@@ -57,6 +59,13 @@ class Module extends AbstractModule
                     . ' ' . $t->translate('See module’s installation documentation.') // @translate
             );
         }
+
+        $messenger = new Messenger();
+        $message = new Message(
+            'If your files are not recognized as score, install module Next.' // @translate
+                . ' ' . $t->translate('See module’s installation documentation.') // @translate
+        );
+        $messenger->addWarning($message);
     }
 
     protected function postInstall(): void
