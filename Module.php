@@ -50,10 +50,11 @@ class Module extends AbstractModule
 
     protected function preInstall(): void
     {
+        $services = $this->getServiceLocator();
+        $t = $services->get('MvcTranslator');
+
         $js = __DIR__ . '/asset/vendor/verovio/js/verovio-toolkit.js';
         if (!file_exists($js)) {
-            $services = $this->getServiceLocator();
-            $t = $services->get('MvcTranslator');
             throw new ModuleCannotInstallException(
                 $t->translate('The Verovio library should be installed.') // @translate
                     . ' ' . $t->translate('See module’s installation documentation.') // @translate
