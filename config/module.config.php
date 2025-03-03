@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+
 namespace Verovio;
 
 return [
@@ -10,13 +11,15 @@ return [
     'file_renderers' => [
         'invokables' => [
             'verovio' => Media\FileRenderer\Verovio::class,
-        ],
-        'aliases' => [
-            'application/vnd.mei+xml' => 'verovio',
-            'application/vnd.recordare.musicxml' => 'verovio',
-            'mei' => 'verovio',
-            'musicxml' => 'verovio',
-            'mxl' => 'verovio',
+
+            // Aliases are not used to speed loading and to decrease memory use.
+            // TODO Check if the issue is still there.
+
+            'application/vnd.mei+xml' => Media\FileRenderer\Verovio::class,
+            'application/vnd.recordare.musicxml' => Media\FileRenderer\Verovio::class,
+            'mei' => Media\FileRenderer\Verovio::class,
+            'musicxml' => Media\FileRenderer\Verovio::class,
+            'mxl' => Media\FileRenderer\Verovio::class,
         ],
     ],
     'view_helpers' => [
