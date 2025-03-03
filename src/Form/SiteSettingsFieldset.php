@@ -9,15 +9,25 @@ class SiteSettingsFieldset extends Fieldset
 {
     protected $label = 'Verovio MEI viewer'; // @translate
 
+    protected $elementGroups = [
+        // "Player" is used instead of viewer, because "viewer" is used for a site
+        // user role and cannot be translated differently (no context).
+        // Player is polysemic too anyway, but less used and more adapted for
+        // non-image viewers.
+        'player' => 'Players', // @translate
+    ];
+
     public function init(): void
     {
         $this
             ->setAttribute('id', 'verovio')
+            ->setOption('element_groups', $this->elementGroups)
             ->add([
                 'name' => 'verovio_template',
                 'type' => CommonElement\OptionalRadio::class,
                 'options' => [
-                    'label' => 'Verovio template', // @translate
+                    'element_group' => 'player',
+                    'label' => 'Verovio: Default template', // @translate
                     'value_options' => [
                         // Same options than the block.
                         'common/verovio' => 'App (simple viewer)', // @translate
