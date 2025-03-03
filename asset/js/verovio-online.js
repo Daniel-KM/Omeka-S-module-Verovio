@@ -1,6 +1,6 @@
 'use strict';
 
-import '../vendor/verovio/js/verovio-app.js';
+import 'https://editor.verovio.org/javascript/app/verovio-app.js';
 
 var verovioId = 'verovio';
 var verovioDiv = document.getElementById(verovioId);

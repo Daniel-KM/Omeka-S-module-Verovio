@@ -19,6 +19,8 @@ class SiteSettingsFieldset extends Fieldset
 
     public function init(): void
     {
+        $versions = include dirname(__DIR__, 2) . '/data/player/versions.php';
+
         $this
             ->setAttribute('id', 'verovio')
             ->setOption('element_groups', $this->elementGroups)
@@ -31,13 +33,49 @@ class SiteSettingsFieldset extends Fieldset
                     'value_options' => [
                         // Same options than block templates.
                         'common/verovio' => 'App (simple viewer)', // @translate
+                        'common/verovio-toolkit' => 'Toolkit (via theme)', // @translate
                         'common/verovio-mei-viewer' => 'Official (Bootstrap 3)', // @translate
                         'common/verovio-viewer' => 'Web (Bootstrap 4)', // @translate
-                        'common/verovio-toolkit' => 'Custom (via theme)', // @translate
                     ],
                 ],
                 'attributes' => [
                     'id' => 'verovio_template',
+                ],
+            ])
+            ->add([
+                'name' => 'verovio_variant',
+                'type' => CommonElement\OptionalSelect::class,
+                'options' => [
+                    'element_group' => 'player',
+                    'label' => 'Verovio: Toolkit variant', // @translate
+                    'info' => ' ',
+                    'documentation' => 'https://book.verovio.org/installing-or-building-from-sources/javascript-and-webassembly.html',
+                    'value_options' => [
+                        'wasm' => 'Wasm (recommended)', // @translate
+                        'hum' => 'Humdrum', // @translate
+                        'asm' => 'Asm (to support old browsers)', // @translate
+                    ],
+                    'empty_option' => '',
+                ],
+                'attributes' => [
+                    'id' => 'verovio_variant',
+                    'class' => 'chosen-select',
+                    'data-placeholder' => 'Select a variant…', // @translate
+                ],
+            ])
+            ->add([
+                'name' => 'verovio_version',
+                'type' => CommonElement\OptionalSelect::class,
+                'options' => [
+                    'element_group' => 'player',
+                    'label' => 'Verovio: Version', // @translate
+                    'value_options' => array_combine($versions, $versions),
+                    'empty_option' => '',
+                ],
+                'attributes' => [
+                    'id' => 'verovio_version',
+                    'class' => 'chosen-select',
+                    'data-placeholder' => 'Select a version…', // @translate
                 ],
             ])
         ;

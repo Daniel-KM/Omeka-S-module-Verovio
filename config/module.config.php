@@ -41,9 +41,10 @@ return [
     ],
     'block_templates' => [
         'verovio' => [
+            // Same options in site settings.
+            'verovio-toolkit' => 'Toolkit (via theme)', // @translate
             'verovio-mei-viewer' => 'Official (Bootstrap 3)', // @translate
             'verovio-viewer' => 'Web (Bootstrap 4)', // @translate
-            'verovio-toolkit' => 'Custom (via theme)', // @translate
         ],
     ],
     'translator' => [
@@ -62,10 +63,14 @@ return [
         ],
         'site_settings' => [
             'verovio_template' => 'common/verovio',
+            'verovio_variant' => 'wasm',
+            'verovio_version' => 'local',
         ],
         'block_settings' => [
             'verovio' => [
                 'source' => '',
+                'variant' => 'wasm',
+                'version' => 'local',
             ],
         ],
     ],

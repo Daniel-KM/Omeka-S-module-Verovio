@@ -3,6 +3,8 @@
  * @var \Laminas\View\Renderer\PhpRenderer $this
  * @var \Verovio\Site\BlockLayout\Verovio $block
  * @var string $source
+ * @var string $version
+ * @var string $variant
  *
  * @uses \Verovio\View\Helper\Verovio
  *
@@ -12,5 +14,7 @@
 
 echo $this->verovio(null, [
     'source' => $source,
+    'variant' => $variant,
+    'version' => $version,
     'template' => 'common/verovio-mei-viewer',
 ]);

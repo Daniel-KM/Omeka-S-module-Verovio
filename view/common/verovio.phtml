@@ -4,6 +4,8 @@
  * @var \Omeka\Api\Representation\AbstractResourceEntityRepresentation $resource
  * @var string $source
  * @var string $heading
+ * @var string $version
+ * @var string $variant Not used with this template
  * @var array $attributes
  *
  * And passed options.
@@ -26,7 +28,7 @@ $this->headLink()
     ->appendStylesheet($assetUrl('css/verovio.css', 'Verovio'))
 ;
 $this->headScript()
-    ->appendFile($assetUrl('js/verovio.js', 'Verovio'), 'module')
+    ->appendFile($assetUrl(empty($version) || $version === 'local' ? 'js/verovio.js' : 'js/verovio-online.js', 'Verovio'), 'module')
 ;
 ?>
 

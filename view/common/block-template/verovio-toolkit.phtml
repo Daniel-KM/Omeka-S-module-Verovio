@@ -3,6 +3,7 @@
  * @var \Laminas\View\Renderer\PhpRenderer $this
  * @var \Verovio\Site\BlockLayout\Verovio $block
  * @var string $source
+ * @var string $version
  *
  * @uses \Verovio\View\Helper\Verovio
  *
@@ -12,5 +13,6 @@
 
 echo $this->verovio(null, [
     'source' => $source,
+    'version' => $version,
     'template' => 'common/verovio-toolkit',
 ]);

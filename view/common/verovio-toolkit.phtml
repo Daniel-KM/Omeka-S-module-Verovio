@@ -2,22 +2,49 @@
 /**
  * @var \Laminas\View\Renderer\PhpRenderer $this
  * @var \Omeka\Api\Representation\AbstractResourceEntityRepresentation $resource
+ * @var string $source
+ * @var string $heading
+ * @var string $version
+ * @var string $variant
+ * @var array $attributes
+ *
+ * And passed options.
+ *
+ * Deprecated
  * @var array $options
  */
 
 // Custom Verovio viewer.
 
-$translate = $this->plugin('translate');
-$escape = $this->plugin('escapeHtml');
-$assetUrl = $this->plugin('assetUrl');
+$plugins = $this->getHelperPluginManager();
+$escape = $plugins->get('escapeHtml');
+$assetUrl = $plugins->get('assetUrl');
+$translate = $plugins->get('translate');
 
 $source = $options['source'] ?? $resource->originalUrl();
+
+$variant ??= 'wasm';
+$version ??= 'local';
+
+if (empty($version) || $version === 'local') {
+    $js = $variant === 'asm'
+        ? $assetUrl('vendor/verovio/js/verovio-toolkit.js', 'Verovio')
+        : $assetUrl('vendor/verovio/js/verovio-toolkit-wasm.js', 'Verovio');
+} else {
+    if ($variant === 'asm') {
+        $js = "https://www.verovio.org/javascript/$version/verovio-toolkit.js";
+    } elseif ($variant === 'hum') {
+        $js = "https://www.verovio.org/javascript/$version/verovio-toolkit-hum.js";
+    } else {
+        $js = "https://www.verovio.org/javascript/$version/verovio-toolkit-wasm.js";
+    }
+}
 
 $this->headLink()
     ->appendStylesheet($assetUrl('css/verovio.css', 'Verovio'))
 ;
 $this->headScript()
-    ->appendFile($assetUrl('vendor/verovio/js/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
+    ->appendFile($js, 'text/javascript', ['defer' => 'defer'])
     ->appendFile($assetUrl('js/verovio-toolkit.js', 'Verovio'), 'text/javascript', ['defer' => 'defer'])
 ;
 ?>

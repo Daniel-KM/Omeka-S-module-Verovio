@@ -22,6 +22,8 @@ class Verovio implements RendererInterface
      * @var array
      */
     protected $defaultOptions = [
+        'variant' => 'wasm',
+        'version' => 'local',
         'attributes' => 'allowfullscreen="allowfullscreen" style="height: 600px; height: 70vh; border: 1px solid lightgray;"',
         'template' => self::PARTIAL_NAME,
     ];
@@ -34,6 +36,8 @@ class Verovio implements RendererInterface
      * @param array $options These options are managed for sites:
      * - template (string): the partial to use
      * - source (string): It must contains source url if resource is not set.
+     * - variant (string): the variant to use for some templates
+     * - version (string): the version to use for some templates
      * - attributes (array): set the attributes to add
      * @return string
      */
@@ -42,10 +46,14 @@ class Verovio implements RendererInterface
         $status = $view->status();
         if ($status->isSiteRequest()) {
             $siteSetting = $view->plugin('siteSetting');
-            $template = $options['template'] ?? $siteSetting('verovio_template', $this->defaultOptions['template']);
+            $template ??= $siteSetting('verovio_template', $this->defaultOptions['template']);
+            $options['variant'] ??= $siteSetting('verovio_variant', $this->defaultOptions['variant']);
+            $options['version'] ??= $siteSetting('verovio_version', $this->defaultOptions['version']);
             $options['attributes'] = $options['attributes'] ?? $this->defaultOptions['attributes'];
         } else {
             $template = $this->defaultOptions['template'];
+            $options['variant'] = $this->defaultOptions['variant'];
+            $options['version'] = $this->defaultOptions['version'];
             $options['attributes'] = $this->defaultOptions['attributes'];
         }
 
@@ -53,7 +61,13 @@ class Verovio implements RendererInterface
 
         $vars = ['resource' => $media]
             + $options
-            + ['source' => null, 'heading' => null];
+            + [
+                'source' => null,
+                'heading' => null,
+                'variant' => null,
+                'version' => null,
+                'attributes' => [],
+            ];
 
         // For compatibility with old themes.
         $vars['options'] = $options;
