@@ -39,6 +39,13 @@ return [
             Form\VerovioFieldset::class => Form\VerovioFieldset::class,
         ],
     ],
+    'block_templates' => [
+        'verovio' => [
+            'verovio-mei-viewer' => 'Official (Bootstrap 3)', // @translate
+            'verovio-viewer' => 'Web (Bootstrap 4)', // @translate
+            'verovio-toolkit' => 'Custom (via theme)', // @translate
+        ],
+    ],
     'translator' => [
         'translation_file_patterns' => [
             [
@@ -60,7 +67,6 @@ return [
             'verovio' => [
                 'heading' => '',
                 'source' => '',
-                'template' => '',
             ],
         ],
     ],

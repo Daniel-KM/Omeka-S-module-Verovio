@@ -5,14 +5,24 @@ namespace Verovio\View\Helper;
 use Laminas\View\Helper\AbstractHelper;
 use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
 
+/**
+ * @todo Factorize with the view helper.
+ * @see \Verovio\Media\FileRenderer\Verovio
+ * @see \Verovio\View\Helper\Verovio
+ */
 class Verovio extends AbstractHelper
 {
+    /**
+     * The default partial view script.
+     */
+    const PARTIAL_NAME = 'common/verovio';
+
     /**
      * @var array
      */
     protected $defaultOptions = [
         'attributes' => 'allowfullscreen="allowfullscreen" style="height: 600px; height: 70vh; border: 1px solid lightgray;"',
-        'template' => \Verovio\Media\FileRenderer\Verovio::PARTIAL_NAME,
+        'template' => self::PARTIAL_NAME,
     ];
 
     /**
@@ -21,10 +31,14 @@ class Verovio extends AbstractHelper
      * Proxies to {@link render()}.
      *
      * @param AbstractResourceEntityRepresentation|null $resource
-     * @param array $options
+     * @param array $options Managed options:
+     * - template (string)
+     * - source (string)
+     * - heading (string)
+     * - attributes (array)
      * @return string Html string corresponding to the viewer.
      */
-    public function __invoke($resource, $options = [])
+    public function __invoke(AbstractResourceEntityRepresentation $resource, $options = []): string
     {
         if (isset($options['source'])) {
             return $this->render($resource, $options);
@@ -76,13 +90,14 @@ class Verovio extends AbstractHelper
     /**
      * Render a verovio viewer for a resource, according to options.
      *
-     * @todo Factorize with the media renderer.
-     *
-     * @param AbstractResourceEntityRepresentation|null $resource
-     * @param array $options It must contains the source url.
-     * @return string Html code.
+     * @param AbstractResourceEntityRepresentation $resource
+     * @param array $options These options are managed for sites:
+     * - template (string): the partial to use
+     * - source (string): It must contains source url if resource is not set.
+     * - attributes (array): set the attributes to add
+     * @return string
      */
-    protected function render($resource, array $options = [])
+    protected function render(?AbstractResourceEntityRepresentation $resource, array $options = []): string
     {
         $view = $this->getView();
 
@@ -96,10 +111,13 @@ class Verovio extends AbstractHelper
             $options['attributes'] = $this->defaultOptions['attributes'];
         }
 
-        unset($options['template']);
-        return $view->partial($template, [
-            'resource' => $resource,
-            'options' => $options,
-        ]);
+        $vars = ['resource' => $resource]
+            + $options
+            + ['source' => null, 'heading' => null];
+
+        // For compatibility with old themes.
+        $vars['options'] = $options;
+
+        return $view->partial($template, $vars);
     }
 }

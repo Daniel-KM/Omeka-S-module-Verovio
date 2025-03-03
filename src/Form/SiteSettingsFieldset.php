@@ -29,7 +29,7 @@ class SiteSettingsFieldset extends Fieldset
                     'element_group' => 'player',
                     'label' => 'Verovio: Default template', // @translate
                     'value_options' => [
-                        // Same options than the block.
+                        // Same options than block templates.
                         'common/verovio' => 'App (simple viewer)', // @translate
                         'common/verovio-mei-viewer' => 'Official (Bootstrap 3)', // @translate
                         'common/verovio-viewer' => 'Web (Bootstrap 4)', // @translate

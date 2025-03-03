@@ -1,10 +1,16 @@
 <?php declare(strict_types=1);
+
 namespace Verovio\Media\FileRenderer;
 
 use Laminas\View\Renderer\PhpRenderer;
 use Omeka\Api\Representation\MediaRepresentation;
 use Omeka\Media\FileRenderer\RendererInterface;
 
+/**
+ * @todo Factorize with the view helper.
+ * @see \Verovio\Media\FileRenderer\Verovio
+ * @see \Verovio\View\Helper\Verovio
+ */
 class Verovio implements RendererInterface
 {
     /**
@@ -23,16 +29,15 @@ class Verovio implements RendererInterface
     /**
      * Render a xml-mei file via verovio library.
      *
-     * @todo Factorize with the view helper.
-     *
      * @param PhpRenderer $view,
      * @param MediaRepresentation $media
      * @param array $options These options are managed for sites:
-     *   - template: the partial to use
-     *   - attributes: set the attributes to add
+     * - template (string): the partial to use
+     * - source (string): It must contains source url if resource is not set.
+     * - attributes (array): set the attributes to add
      * @return string
      */
-    public function render(PhpRenderer $view, MediaRepresentation $media, array $options = [])
+    public function render(PhpRenderer $view, MediaRepresentation $media, array $options = []): string
     {
         $status = $view->status();
         if ($status->isSiteRequest()) {
@@ -45,9 +50,14 @@ class Verovio implements RendererInterface
         }
 
         unset($options['template']);
-        return $view->partial($template, [
-            'resource' => $media,
-            'options' => $options,
-        ]);
+
+        $vars = ['resource' => $media]
+            + $options
+            + ['source' => null, 'heading' => null];
+
+        // For compatibility with old themes.
+        $vars['options'] = $options;
+
+        return $view->partial($template, $vars);
     }
 }
