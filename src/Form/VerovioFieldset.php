@@ -11,17 +11,6 @@ class VerovioFieldset extends Fieldset
     {
         $this
             ->add([
-                'name' => 'o:block[__blockIndex__][o:data][heading]',
-                'type' => Element\Text::class,
-                'options' => [
-                    'label' => 'Block title', // @translate
-                ],
-                'attributes' => [
-                    'id' => 'verovio-heading',
-                    'required' => false,
-                ],
-            ])
-            ->add([
                 'name' => 'o:block[__blockIndex__][o:data][source]',
                 'type' => Element\Url::class,
                 'options' => [

@@ -65,7 +65,6 @@ return [
         ],
         'block_settings' => [
             'verovio' => [
-                'heading' => '',
                 'source' => '',
             ],
         ],
