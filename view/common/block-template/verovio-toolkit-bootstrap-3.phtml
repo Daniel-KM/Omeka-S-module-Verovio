@@ -1,8 +1,12 @@
 <?php
 /**
+ * @deprecated Adapt template verovio-toolkit in a theme
+ *
  * @var \Laminas\View\Renderer\PhpRenderer $this
  * @var \Verovio\Site\BlockLayout\Verovio $block
  * @var string $source
+ * @var string $version
+ * @var string $variant
  *
  * @uses \Verovio\View\Helper\Verovio
  *
@@ -12,5 +16,7 @@
 
 echo $this->verovio(null, [
     'source' => $source,
-    'template' => 'common/verovio-viewer',
+    'variant' => $variant,
+    'version' => $version,
+    'template' => 'common/verovio-toolkit-bootstrap-3',
 ]);

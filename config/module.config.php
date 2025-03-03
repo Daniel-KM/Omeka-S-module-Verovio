@@ -42,9 +42,9 @@ return [
     'block_templates' => [
         'verovio' => [
             // Same options in site settings.
-            'verovio-toolkit' => 'Toolkit (via theme)', // @translate
-            'verovio-mei-viewer' => 'Official (Bootstrap 3)', // @translate
-            'verovio-viewer' => 'Web (Bootstrap 4)', // @translate
+            'verovio-toolkit' => 'Toolkit', // @translate
+            'verovio-toolkit-bootstrap-3' => 'Toolkit with Bootstrap 3 (deprecated)', // @translate
+            'verovio-toolkit-bootstrap-4' => 'Toolkit with Bootstrap 4 (deprecated)', // @translate
         ],
     ],
     'translator' => [

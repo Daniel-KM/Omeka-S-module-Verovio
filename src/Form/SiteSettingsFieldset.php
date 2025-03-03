@@ -33,9 +33,9 @@ class SiteSettingsFieldset extends Fieldset
                     'value_options' => [
                         // Same options than block templates.
                         'common/verovio' => 'App (simple viewer)', // @translate
-                        'common/verovio-toolkit' => 'Toolkit (via theme)', // @translate
-                        'common/verovio-mei-viewer' => 'Official (Bootstrap 3)', // @translate
-                        'common/verovio-viewer' => 'Web (Bootstrap 4)', // @translate
+                        'common/verovio-toolkit' => 'Toolkit', // @translate
+                        'common/verovio-toolkit-bootstrap-3' => 'Toolkit with Bootstrap 3 (deprecated)', // @translate
+                        'common/verovio-toolkit-bootstrap-4' => 'Toolkit with Bootstrap 4 (deprecated)', // @translate
                     ],
                 ],
                 'attributes' => [
