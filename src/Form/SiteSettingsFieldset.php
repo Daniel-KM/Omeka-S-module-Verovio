@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
+
 namespace Verovio\Form;
 
-use Laminas\Form\Element;
+use Common\Form\Element as CommonElement;
 use Laminas\Form\Fieldset;
 
 class SiteSettingsFieldset extends Fieldset
@@ -11,9 +12,10 @@ class SiteSettingsFieldset extends Fieldset
     public function init(): void
     {
         $this
+            ->setAttribute('id', 'verovio')
             ->add([
                 'name' => 'verovio_template',
-                'type' => Element\Radio::class,
+                'type' => CommonElement\OptionalRadio::class,
                 'options' => [
                     'label' => 'Verovio template', // @translate
                     'value_options' => [

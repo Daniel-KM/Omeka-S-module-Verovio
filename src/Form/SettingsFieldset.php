@@ -1,8 +1,9 @@
 <?php declare(strict_types=1);
+
 namespace Verovio\Form;
 
+use Common\Form\Element as CommonElement;
 use Laminas\Form\Fieldset;
-use Omeka\Form\Element\PropertySelect;
 
 class SettingsFieldset extends Fieldset
 {
@@ -11,9 +12,10 @@ class SettingsFieldset extends Fieldset
     public function init(): void
     {
         $this
+            ->setAttribute('id', 'verovio')
             ->add([
                 'name' => 'verovio_source_property',
-                'type' => PropertySelect::class,
+                'type' => CommonElement\OptionalPropertySelect::class,
                 'options' => [
                     'label' => 'Property used for external MEI', // @translate
                     'info' => 'The property supplying the MEI file via URL, for example "dcterms:hasFormat" or "dcterms:isFormatOf".', // @translate

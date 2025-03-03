@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
+
 namespace Verovio\Form;
 
+use Common\Form\Element as CommonElement;
 use Laminas\Form\Element;
 use Laminas\Form\Fieldset;
 
@@ -35,7 +37,7 @@ class VerovioFieldset extends Fieldset
             ])
             ->add([
                 'name' => 'o:block[__blockIndex__][o:data][template]',
-                'type' => Element\Select::class,
+                'type' => CommonElement\OptionalSelect::class,
                 'options' => [
                     'label' => 'Template to display', // @translate
                     'empty_option' => '',
