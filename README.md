@@ -14,15 +14,20 @@ read musical scores and listen them via MIDI.
 Installation
 ------------
 
-The module uses an external js library [Verovio], so use the release zip to
-install it, or use and init the source. Furthermore, it is recommended to
-install the module [Next] (see below).
+See general end user documentation for [installing a module].
+
+The module [Common] must be installed first.
+
+The module uses an external library [Verovio], so use the release zip to install
+it, or use and init the source.
+
+Furthermore, it is recommended to install the module [XML Viewer] or [Bulk Edit]
+to get the right media types (see below).
 
 * From the zip
 
-Download the last release [Verovio.zip] from the list of releases (the
-master does not contain the dependency), and uncompress it in the `modules`
-directory.
+Download the last release [Verovio.zip] from the list of releases (the master
+does not contain the dependency), and uncompress it in the `modules` directory.
 
 * From the source and for development:
 
@@ -33,13 +38,13 @@ the module to `Verovio`, and go to the root module, and run:
 composer install --no-dev
 ```
 
-The next times:
+Then install it like any other Omeka module and follow the config instructions.
 
-```sh
-composer update --no-dev
-```
+* About Verovio
 
-Then install it like any other Omeka module.
+Verovio is a complex library, but well documented. It is integrated as a simple
+viewer ("app") or a full viewer/editor ("toolkit"). The installed version is the
+last one.
 
 
 Usage
@@ -49,10 +54,11 @@ Usage
 
 Because mei files are xml files, they are not automatically recognized by Omeka.
 To identify them, there are two solutions: use the file extension `.mei` or
-install the module [Next], that identify the xml-mei files with the unregistered
- vendor media type `application/vnd.mei+xml`. The point is the same for the
- MusicXML files: use extensions `musicxml` or `mxl`. The vendor media type is
- managed by the w3c: `application/vnd.recordare.musicxml`.
+install the module [XML Viewer], that identify the xml-mei files with the
+unregistered vendor media type `application/vnd.mei+xml`. The point is the same
+for the MusicXML files: use extensions `musicxml` or `mxl`. The vendor media
+types are managed by the w3c: `application/vnd.recordare.musicxml+xml` (flat)
+and `application/vnd.recordare.musicxml` (zipped).
 
 The white lists of media types and extensions are automatically updated to
 allow to upload xml files, with the extension and media type above.
@@ -60,7 +66,7 @@ allow to upload xml files, with the extension and media type above.
 ### Display of MEI and MusicXML files
 
 When a file has extension `.mei`, `mxl`, or `musicxml`, or media type `application/vnd.mei+xml`
-or `application/vnd.recordare.musicxml`, it is automatically displayed anywhere,
+or `application/vnd.recordare.musicxml+xml`, it is automatically displayed anywhere,
 in public site or in admin board.
 
 __Warning__: The `mxl` format (zipped musicxml) is not supported by the included
@@ -97,8 +103,9 @@ A block layout is available too if needed for external urls. Furthermore, a view
 helper is available to render any url anywhere:
 
 ```php
-$options = ['source' => 'https://example.org/file.mei'];
-echo $this->verovio(null, $options);
+echo $this->verovio(null, [
+    'source' => 'https://example.org/file.mei',
+]);
 ```
 
 For a better integration in the sites, it's possible to customize the template:
@@ -150,13 +157,13 @@ Copyright
 
 [Verovio]:
 
-* Copyright 2014-2019, Swiss RISM Office
+* Copyright 2014-2025, Swiss RISM Office
 
 Module Verovio for Omeka S:
 
-* Copyright Daniel Berthereau, 2019-2021
+* Copyright Daniel Berthereau, 2019-2025
 
-First version of this module was built for [Fachhochschule Nordwestschweiz],
+First and next versions of this module was built for [Fachhochschule Nordwestschweiz],
 University of Applied Sciences and Arts, Basel Academy of Music, Academy of Music,
 [Schola Cantorum Basiliensis].
 
@@ -167,7 +174,8 @@ University of Applied Sciences and Arts, Basel Academy of Music, Academy of Musi
 [MusicXML]: https://w3c.github.io/musicxml/
 [Omeka S]: https://omeka.org/s
 [Verovio.zip]: https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/releases
-[Next]: https://gitlab.com/Daniel-KM/Omeka-S-module-Next
+[XML Viewer]: https://gitlab.com/Daniel-KM/Omeka-S-module-XmlViewer
+[Bulk Edit]: https://gitlab.com/Daniel-KM/Omeka-S-module-BulkEdit
 [module issues]: https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/issues
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html
