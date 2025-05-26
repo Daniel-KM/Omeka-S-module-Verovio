@@ -15,7 +15,8 @@
 
 	/* CONTEXTMENU CLASS DEFINITION
 	 * ============================ */
-	var toggle = '[data-toggle="context"]';
+	// "data-toggle" is for bootstrap-4, "data-bs-toggle" for bootstrap-5.
+	var toggle = '[data-bs-toggle="context"], [data-toggle="context"]';
 
 	var ContextMenu = function (element, options) {
 		this.$element = $(element);

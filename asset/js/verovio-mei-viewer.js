@@ -1,4 +1,4 @@
-/* Original mei-viewer javascript adapted to comply with bootstrap 3 and bootstrap 4. */
+/* Original mei-viewer javascript adapted to comply with bootstrap 3, bootstrap 4 and bootstrap 5. */
 /* Some code from https://github.com/marenzio/marenzio.github.io/blob/36355d31a606763674c094862d40f20d98704ead/_layouts/edition.html#L176-L208 */
 
 $( document ).ready(function() {
@@ -568,7 +568,8 @@ $( document ).ready(function() {
 
                 var option = options.groups[grp].options[opt];
 
-                var form_group = $("<div class='form-group row'></div>");
+                // "form-group" is for bootstrap 4, "mb-3" for bootstrap 5.
+                var form_group = $('<div class="form-group mb-3 row"></div>');
                 tab_panel.append(form_group);
 
                 var label = $("<label class='col-sm-3 control-label col-form-label'></label>");
@@ -601,7 +602,8 @@ $( document ).ready(function() {
                     }
                 }
                 else if (option.type == "std::string-list") {
-                    var select = $("<select class='form-control'></select>");
+                    // "form-control" is for bootstrap 4, "form-select" for bootstrap 5.
+                    var select = $('<select class="form-control form-select"></select>');
                     input_div.append(select);
                     select.attr("name", opt);
 
@@ -817,7 +819,8 @@ $( document ).ready(function() {
         $('#optionDialog').modal('hide');
     });
 
-    $('[data-toggle=offcanvas]').click(function() {
+    // "data-toggle" is for bootstrap-4, "data-bs-toggle" for bootstrap-5.
+    $('[data-bs-toggle=offcanvas], [data-toggle=offcanvas]').click(function() {
         $('.row-offcanvas').toggleClass('active');
     });
 
