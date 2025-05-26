@@ -36,6 +36,7 @@ class SiteSettingsFieldset extends Fieldset
                         'common/verovio-toolkit' => 'Toolkit', // @translate
                         'common/verovio-toolkit-bootstrap-3' => 'Toolkit with Bootstrap 3 (deprecated)', // @translate
                         'common/verovio-toolkit-bootstrap-4' => 'Toolkit with Bootstrap 4 (deprecated)', // @translate
+                        'common/verovio-toolkit-bootstrap-5' => 'Toolkit with Bootstrap 5', // @translate
                     ],
                 ],
                 'attributes' => [

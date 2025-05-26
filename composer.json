@@ -29,7 +29,11 @@
         }
     },
     "config": {
-        "vendor-dir": "vendor/asset"
+        "vendor-dir": "vendor/asset",
+        "allow-plugins": {
+            "composer/installers": true,
+            "oomphinc/composer-installers-extender": true
+        }
     },
     "repositories": [
         {
@@ -42,12 +46,38 @@
                     "type": "file"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "twbs/bootstrap-4",
+                "type": "omeka-addon-asset",
+                "version": "v4.6.2",
+                "dist": {
+                    "url": "https://github.com/twbs/bootstrap/releases/download/v4.6.2/bootstrap-4.6.2-dist.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "twbs/bootstrap",
+                "type": "omeka-addon-asset",
+                "version": "v5.3.6",
+                "dist": {
+                    "url": "https://github.com/twbs/bootstrap/releases/download/v5.3.6/bootstrap-5.3.6-dist.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
+        "oomphinc/composer-installers-extender": "^2.0",
         "slowprog/composer-copy-file": "^0.3",
         "rism-ch/verovio-toolkit-wasm": "5.3.0",
-        "twbs/bootstrap": "^4.6"
+        "twbs/bootstrap-4": "^4.6",
+        "twbs/bootstrap": "^5.3"
     },
     "scripts": {
         "post-install-cmd": [
@@ -58,9 +88,14 @@
         ]
     },
     "extra": {
+        "installer-types": ["omeka-addon-asset"],
+        "installer-paths": {
+            "asset/vendor/{$name}/": [
+                "type:omeka-addon-asset"
+            ]
+        },
         "copy-file": {
-            "vendor/asset/rism-ch/verovio-toolkit-wasm/verovio-toolkit-wasm.js": "asset/vendor/verovio/js/",
-            "vendor/asset/twbs/bootstrap/dist": "asset/vendor/bootstrap/"
+            "vendor/asset/rism-ch/verovio-toolkit-wasm/verovio-toolkit-wasm.js": "asset/vendor/verovio/js/"
         }
     }
 }
