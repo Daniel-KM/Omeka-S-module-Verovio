@@ -47,7 +47,7 @@
     "require": {
         "slowprog/composer-copy-file": "^0.3",
         "rism-ch/verovio-toolkit-wasm": "5.3.0",
-        "twbs/bootstrap": "^4.6"
+        "twbs/bootstrap": "^4.6 || ^5.0"
     },
     "scripts": {
         "post-install-cmd": [
