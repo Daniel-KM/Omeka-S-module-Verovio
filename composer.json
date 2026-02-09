@@ -1,19 +1,7 @@
 {
     "name": "daniel-km/omeka-s-module-verovio",
-    "description": "Verovio (module for Omeka S)",
-    "type": "library",
-    "license": "CECILL-2.1",
-    "authors": [
-        {
-            "name": "Daniel Berthereau",
-            "email": "Daniel.packagist@Berthereau.net"
-        }
-    ],
-    "homepage": "https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio",
-    "support": {
-        "issues": "https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/issues",
-        "forum": "https://forum.omeka.org/"
-    },
+    "type": "omeka-s-module",
+    "description": "Module for Omeka S: Integrates Verovio, an XML-MEI and MusicXML viewer for musical scores.",
     "keywords": [
         "Omeka S",
         "Omeka S module",
@@ -23,79 +11,46 @@
         "MusicXml",
         "MIDI"
     ],
+    "license": "CECILL-2.1",
+    "homepage": "https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio",
+    "authors": [
+        {
+            "name": "Daniel Berthereau",
+            "email": "Daniel.packagist@Berthereau.net"
+        }
+    ],
+    "support": {
+        "issues": "https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/issues",
+        "forum": "https://forum.omeka.org/"
+    },
+    "_require (not set until Omeka S merges PR #2412)": {
+        "omeka/omeka-s": "^4.1",
+        "daniel-km/omeka-s-module-common": "*"
+    },
+    "require": {
+        "sempia/external-assets": "^1.0"
+    },
     "autoload": {
         "psr-4": {
-            "ViewerJs\\": "src/"
+            "Verovio\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VerovioTest\\": "tests/VerovioTest/"
         }
     },
     "config": {
-        "vendor-dir": "vendor/asset",
         "allow-plugins": {
-            "composer/installers": true,
-            "oomphinc/composer-installers-extender": true
+            "sempia/external-assets": true
         }
-    },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "rism-ch/verovio-toolkit-wasm",
-                "version": "5.3.0",
-                "dist": {
-                    "url": "https://www.verovio.org/javascript/5.3.0/verovio-toolkit-wasm.js",
-                    "type": "file"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "twbs/bootstrap-4",
-                "type": "omeka-addon-asset",
-                "version": "v4.6.2",
-                "dist": {
-                    "url": "https://github.com/twbs/bootstrap/releases/download/v4.6.2/bootstrap-4.6.2-dist.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "twbs/bootstrap",
-                "type": "omeka-addon-asset",
-                "version": "v5.3.6",
-                "dist": {
-                    "url": "https://github.com/twbs/bootstrap/releases/download/v5.3.6/bootstrap-5.3.6-dist.zip",
-                    "type": "zip"
-                }
-            }
-        }
-    ],
-    "require": {
-        "oomphinc/composer-installers-extender": "^2.0",
-        "slowprog/composer-copy-file": "^0.3",
-        "rism-ch/verovio-toolkit-wasm": "5.3.0",
-        "twbs/bootstrap-4": "^4.6",
-        "twbs/bootstrap": "^5.3"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "SlowProg\\CopyFile\\ScriptHandler::copy"
-        ],
-        "post-update-cmd": [
-            "SlowProg\\CopyFile\\ScriptHandler::copy"
-        ]
     },
     "extra": {
-        "installer-types": ["omeka-addon-asset"],
-        "installer-paths": {
-            "asset/vendor/{$name}/": [
-                "type:omeka-addon-asset"
-            ]
-        },
-        "copy-file": {
-            "vendor/asset/rism-ch/verovio-toolkit-wasm/verovio-toolkit-wasm.js": "asset/vendor/verovio/js/"
+        "installer-name": "Verovio",
+        "external-assets": {
+            "asset/vendor/bootstrap-4/": "https://github.com/twbs/bootstrap/releases/download/v4.6.2/bootstrap-4.6.2-dist.zip",
+            "asset/vendor/bootstrap/": "https://github.com/twbs/bootstrap/releases/download/v5.3.6/bootstrap-5.3.6-dist.zip",
+            "asset/vendor/verovio/js/verovio-toolkit-wasm.js": "https://www.verovio.org/javascript/5.3.0/verovio-toolkit-wasm.js"
         }
     }
 }
