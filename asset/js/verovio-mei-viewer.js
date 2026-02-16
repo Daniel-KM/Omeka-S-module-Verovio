@@ -3,11 +3,64 @@
 
 $( document ).ready(function() {
 
+    // Verovio 4+ uses Emscripten with async WASM initialization.
+    // The toolkit constructor fails if the runtime is not ready yet.
+    // Try to create the toolkit and retry if it fails (works with local
+    // and CDN builds regardless of Module.calledRun availability).
+    function waitForVerovioRuntime(callback, retries) {
+        if (typeof verovio === 'undefined') {
+            if (retries > 0) {
+                setTimeout(function() { waitForVerovioRuntime(callback, retries - 1); }, 50);
+            } else {
+                console.error('[Verovio] Library not found after timeout');
+            }
+            return;
+        }
+        try {
+            new verovio.toolkit();
+            callback();
+        } catch (e) {
+            if (retries > 0) {
+                setTimeout(function() { waitForVerovioRuntime(callback, retries - 1); }, 50);
+            } else {
+                console.error('[Verovio] Runtime failed to initialize after timeout');
+                $('#err').text('The Verovio toolkit failed to initialize. Please reload the page.');
+                $('#errorDialog').modal();
+            }
+        }
+    }
+
+    waitForVerovioRuntime(initMeiViewer, 100); // 100 × 50ms = 5s max
+
+    function initMeiViewer() {
+
     var verovioId = 'verovio';
     var verovioOffCanvas = 'verovio-offcanvas';
     var verovioDiv = document.getElementById(verovioId);
 
     var vrvToolkit = new verovio.toolkit();
+
+    // Compatibility layer for Verovio v3 (JSON string API) vs v4+ (object API).
+    var useNewApi = typeof vrvToolkit.getDefaultOptions === 'function';
+    var vrv = {
+        setOptions: function(opts) {
+            useNewApi ? vrvToolkit.setOptions(opts) : vrvToolkit.setOptions(JSON.stringify(opts));
+        },
+        getOptions: function() {
+            var r = vrvToolkit.getOptions();
+            return (typeof r === 'string') ? JSON.parse(r) : r;
+        },
+        getDefaultOptions: function() {
+            if (useNewApi) return vrvToolkit.getDefaultOptions();
+            var r = vrvToolkit.getOptions(true);
+            return (typeof r === 'string') ? JSON.parse(r) : r;
+        },
+        getAvailableOptions: function() {
+            return typeof vrvToolkit.getAvailableOptions === 'function'
+                ? vrvToolkit.getAvailableOptions()
+                : null;
+        }
+    };
     var page = 1;
     var zoom = 40;
     var pageHeight = 2970;
@@ -49,11 +102,10 @@ $( document ).ready(function() {
         pageHeight = calc_page_height();
         pageWidth = calc_page_width();
         options = {
-            adjustPageHeight: "true",
+            adjustPageHeight: true,
             breaks: "auto",
-            inputFormat: format,
-            mmOutput: "false",
-            noFooter: "true",
+            mmOutput: false,
+            noFooter: true,
             pageHeight: pageHeight,
             pageWidth: pageWidth,
             scale: zoom
@@ -68,7 +120,7 @@ $( document ).ready(function() {
         }
 
         //console.log( options );
-        vrvToolkit.setOptions( options );
+        vrv.setOptions( options );
         //vrvToolkit.setOptions( mergedOptions );
     }
 
@@ -492,7 +544,7 @@ $( document ).ready(function() {
             scale: 100
         }
 
-        vrvToolkit.setOptions(pdfOptions);
+        vrv.setOptions(pdfOptions);
         vrvToolkit.redoLayout();
         for (i = 0; i < vrvToolkit.getPageCount(); i++) {
             doc.addPage({size: pdfFormat, layout: pdfOrientation});
@@ -507,7 +559,7 @@ $( document ).ready(function() {
     }
 
     function non_default_options (options) {
-        var defaultOptions = vrvToolkit.getOptions(true);
+        var defaultOptions = vrv.getDefaultOptions();
         var nonDefaultOptions = {};
         for(var key in defaultOptions) {
             if (options[key] && (defaultOptions[key] != options[key])) {
@@ -519,8 +571,8 @@ $( document ).ready(function() {
 
     /* Modal dialog for options */
 
-    options = vrvToolkit.getAvailableOptions();
-    initFormOptions(options);
+    options = vrv.getAvailableOptions();
+    if (options) initFormOptions(options);
 
     function initFormOptions(options) {
 
@@ -766,16 +818,16 @@ $( document ).ready(function() {
 
     $("#option-form :input").change(function() {
         // Reset all options to default
-        vrvToolkit.setOptions(vrvToolkit.getOptions(true));
+        vrv.setOptions(vrv.getDefaultOptions());
         // console.log("Applying options");
         customOptions = non_default_options(JSON.parse($('#option-form').toJSON()));
         apply_zoom();
     });
 
     $("#optionDialog").on("show.bs.modal", function () {
-        savedOptions = non_default_options(vrvToolkit.getOptions(false));
-        var currentOptions = vrvToolkit.getOptions(false)
-        var defaultOptions = vrvToolkit.getOptions(true);
+        savedOptions = non_default_options(vrv.getOptions());
+        var currentOptions = vrv.getOptions();
+        var defaultOptions = vrv.getDefaultOptions();
         for(var key in defaultOptions) {
 
             if (disabledOptions.includes(key)) {
@@ -813,7 +865,7 @@ $( document ).ready(function() {
         savedOptions = undefined;
         customOptions = undefined;
         // Reset to default and clear local storage
-        vrvToolkit.setOptions(vrvToolkit.getOptions(true));
+        vrv.setOptions(vrv.getDefaultOptions());
         localStorage.clear('customOptions');
         //console.debug("Resetting options");
         $('#optionDialog').modal('hide');
@@ -844,5 +896,7 @@ $( document ).ready(function() {
     $('#fullscreen-button').on('click', fullscreen);
 
     $('.popover-dismiss').popover({});
+
+    } // end initMeiViewer
 
 });

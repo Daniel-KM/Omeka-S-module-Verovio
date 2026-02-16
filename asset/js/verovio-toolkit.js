@@ -13,8 +13,22 @@ if (file) {
         if (request.readyState != 4 || request.status != 200) {
             return;
         }
-        var verovioToolkit = new verovio.toolkit();
-        verovioDiv.innerHTML = verovioToolkit.renderData(request.responseText, {});
+        var data = request.responseText;
+        // Verovio 4+ uses Emscripten with async WASM initialization.
+        // The toolkit constructor may fail if the runtime is not ready.
+        function tryRender(retries) {
+            try {
+                var verovioToolkit = new verovio.toolkit();
+                verovioDiv.innerHTML = verovioToolkit.renderData(data, {});
+            } catch (e) {
+                if (retries > 0) {
+                    setTimeout(function() { tryRender(retries - 1); }, 50);
+                } else {
+                    console.error('[Verovio] Runtime failed to initialize');
+                }
+            }
+        }
+        tryRender(100);
     };
     request.send();
 }
