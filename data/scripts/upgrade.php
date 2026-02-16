@@ -40,8 +40,11 @@ if (!method_exists($this, 'checkModuleActiveVersion') || !$this->checkModuleActi
     throw new \Omeka\Module\Exception\ModuleCannotInstallException((string) $message);
 }
 
+// Always update whitelist to ensure new media types and extensions are
+// authorized when support is added in newer versions.
+$this->updateWhitelist();
+
 if (version_compare($oldVersion, '3.4.8', '<')) {
-    $this->updateWhitelist();
 
     /**
      * Migrate blocks of this module to new blocks of Omeka S v4.1.
