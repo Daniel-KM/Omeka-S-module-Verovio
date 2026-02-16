@@ -42,7 +42,7 @@ class Verovio extends AbstractHelper
      * - attributes (array): set the attributes to add
      * @return string Html string corresponding to the viewer.
      */
-    public function __invoke(AbstractResourceEntityRepresentation $resource, $options = []): string
+    public function __invoke(?AbstractResourceEntityRepresentation $resource, $options = []): string
     {
         if (isset($options['source'])) {
             return $this->render($resource, $options);
