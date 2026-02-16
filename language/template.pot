@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-19 00:00+0000\n"
+"POT-Creation-Date: 2026-02-09 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,97 +30,116 @@ msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:77
 #: view/common/verovio-toolkit-bootstrap-4.phtml:75
+#: view/common/verovio-toolkit-bootstrap-5.phtml:75
 #: view/common/verovio-toolkit.phtml:57 view/common/verovio.phtml:40
 msgid "The viewer is loading…"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:91
 #: view/common/verovio-toolkit-bootstrap-4.phtml:91
+#: view/common/verovio-toolkit-bootstrap-5.phtml:91
 msgid "Sorry, Verovio failed to process the MEI data."
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:110
 #: view/common/verovio-toolkit-bootstrap-4.phtml:112
+#: view/common/verovio-toolkit-bootstrap-5.phtml:112
 msgid "First page"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:113
 #: view/common/verovio-toolkit-bootstrap-4.phtml:115
+#: view/common/verovio-toolkit-bootstrap-5.phtml:115
 msgid "Previous page"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:117
 #: view/common/verovio-toolkit-bootstrap-4.phtml:119
+#: view/common/verovio-toolkit-bootstrap-5.phtml:118
 msgid "Jump to page"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:119
 #: view/common/verovio-toolkit-bootstrap-4.phtml:121
+#: view/common/verovio-toolkit-bootstrap-5.phtml:119
 msgid "Next page"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:122
 #: view/common/verovio-toolkit-bootstrap-4.phtml:124
+#: view/common/verovio-toolkit-bootstrap-5.phtml:122
 msgid "Last page"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:132
 #: view/common/verovio-toolkit-bootstrap-4.phtml:132
+#: view/common/verovio-toolkit-bootstrap-5.phtml:128
 msgid "Zoom out"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:136
 #: view/common/verovio-toolkit-bootstrap-4.phtml:136
+#: view/common/verovio-toolkit-bootstrap-5.phtml:131
 msgid "Zoom"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:138
 #: view/common/verovio-toolkit-bootstrap-4.phtml:138
+#: view/common/verovio-toolkit-bootstrap-5.phtml:132
 msgid "Zoom in"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:146
 #: view/common/verovio-toolkit-bootstrap-4.phtml:145
+#: view/common/verovio-toolkit-bootstrap-5.phtml:138
 msgid "Generate a PDF file"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:146
 #: view/common/verovio-toolkit-bootstrap-4.phtml:145
+#: view/common/verovio-toolkit-bootstrap-5.phtml:138
 msgid "Generating PDF…"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:148
 #: view/common/verovio-toolkit-bootstrap-4.phtml:147
+#: view/common/verovio-toolkit-bootstrap-5.phtml:140
 msgid "PDF"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:150
 #: view/common/verovio-toolkit-bootstrap-4.phtml:149
+#: view/common/verovio-toolkit-bootstrap-5.phtml:145
 msgid "Edit styles"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:150
 #: view/common/verovio-toolkit-bootstrap-4.phtml:149
+#: view/common/verovio-toolkit-bootstrap-5.phtml:146
 msgid "Style editor…"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:154
 #: view/common/verovio-toolkit-bootstrap-4.phtml:153
+#: view/common/verovio-toolkit-bootstrap-5.phtml:150
 msgid "Download"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:157
 #: view/common/verovio-toolkit-bootstrap-4.phtml:156
+#: view/common/verovio-toolkit-bootstrap-5.phtml:153
 msgid "Midi player"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:172
 #: view/common/verovio-toolkit-bootstrap-4.phtml:171
+#: view/common/verovio-toolkit-bootstrap-5.phtml:168
 msgid "Help"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:173
 #: view/common/verovio-toolkit-bootstrap-4.phtml:172
+#: view/common/verovio-toolkit-bootstrap-5.phtml:169
 msgid ""
 "On mobile devices, you can swipe left or right to change page and tap or "
 "double tap to zoom-in or zoom-out. On desktops, you can use [ctrl+] left or "
@@ -129,6 +148,7 @@ msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:175
 #: view/common/verovio-toolkit-bootstrap-4.phtml:174
+#: view/common/verovio-toolkit-bootstrap-5.phtml:171
 #, php-format
 msgid ""
 "This viewer uses the latest development version %s and might be unstable."
@@ -136,36 +156,43 @@ msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:182
 #: view/common/verovio-toolkit-bootstrap-4.phtml:181
+#: view/common/verovio-toolkit-bootstrap-5.phtml:178
 msgid "Full screen view"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:200
 #: view/common/verovio-toolkit-bootstrap-4.phtml:199
+#: view/common/verovio-toolkit-bootstrap-5.phtml:197
 msgid "PDF options"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:215
 #: view/common/verovio-toolkit-bootstrap-4.phtml:215
+#: view/common/verovio-toolkit-bootstrap-5.phtml:213
 msgid "Orientation"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:218
 #: view/common/verovio-toolkit-bootstrap-4.phtml:217
+#: view/common/verovio-toolkit-bootstrap-5.phtml:215
 msgid "Portrait"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:219
 #: view/common/verovio-toolkit-bootstrap-4.phtml:218
+#: view/common/verovio-toolkit-bootstrap-5.phtml:216
 msgid "Landscape"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:227
 #: view/common/verovio-toolkit-bootstrap-4.phtml:225
+#: view/common/verovio-toolkit-bootstrap-5.phtml:223
 msgid "Warning!"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:227
 #: view/common/verovio-toolkit-bootstrap-4.phtml:225
+#: view/common/verovio-toolkit-bootstrap-5.phtml:223
 msgid "This is an experimental feature and it can take some time."
 msgstr ""
 
@@ -173,22 +200,27 @@ msgstr ""
 #: view/common/verovio-toolkit-bootstrap-3.phtml:250
 #: view/common/verovio-toolkit-bootstrap-4.phtml:228
 #: view/common/verovio-toolkit-bootstrap-4.phtml:250
+#: view/common/verovio-toolkit-bootstrap-5.phtml:226
+#: view/common/verovio-toolkit-bootstrap-5.phtml:248
 msgid "OK"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:248
 #: view/common/verovio-toolkit-bootstrap-4.phtml:248
+#: view/common/verovio-toolkit-bootstrap-5.phtml:246
 msgid "Reset to default"
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:260
 #: view/common/verovio-toolkit-bootstrap-4.phtml:260
+#: view/common/verovio-toolkit-bootstrap-5.phtml:258
 #: view/common/verovio-toolkit.phtml:61 view/common/verovio.phtml:44
 msgid "This browser does not support javascript."
 msgstr ""
 
 #: view/common/verovio-toolkit-bootstrap-3.phtml:261
 #: view/common/verovio-toolkit-bootstrap-4.phtml:261
+#: view/common/verovio-toolkit-bootstrap-5.phtml:259
 #: view/common/verovio-toolkit.phtml:62 view/common/verovio.phtml:45
 #, php-format
 msgid "You may %sdownload it%s to view it offline."
@@ -264,31 +296,35 @@ msgstr ""
 msgid "Toolkit with Bootstrap 4 (deprecated)"
 msgstr ""
 
-#: src/Form/SiteSettingsFieldset.php:50
+#: src/Form/SiteSettingsFieldset.php:39
+msgid "Toolkit with Bootstrap 5"
+msgstr ""
+
+#: src/Form/SiteSettingsFieldset.php:51
 msgid "Verovio: Toolkit variant"
 msgstr ""
 
-#: src/Form/SiteSettingsFieldset.php:54 src/Form/VerovioFieldset.php:36
+#: src/Form/SiteSettingsFieldset.php:55 src/Form/VerovioFieldset.php:36
 msgid "Wasm (recommended)"
 msgstr ""
 
-#: src/Form/SiteSettingsFieldset.php:55 src/Form/VerovioFieldset.php:37
+#: src/Form/SiteSettingsFieldset.php:56 src/Form/VerovioFieldset.php:37
 msgid "Humdrum"
 msgstr ""
 
-#: src/Form/SiteSettingsFieldset.php:56 src/Form/VerovioFieldset.php:38
+#: src/Form/SiteSettingsFieldset.php:57 src/Form/VerovioFieldset.php:38
 msgid "Asm (to support old browsers)"
 msgstr ""
 
-#: src/Form/SiteSettingsFieldset.php:63 src/Form/VerovioFieldset.php:45
+#: src/Form/SiteSettingsFieldset.php:64 src/Form/VerovioFieldset.php:45
 msgid "Select a variant…"
 msgstr ""
 
-#: src/Form/SiteSettingsFieldset.php:71
+#: src/Form/SiteSettingsFieldset.php:72
 msgid "Verovio: Version"
 msgstr ""
 
-#: src/Form/SiteSettingsFieldset.php:78 src/Form/VerovioFieldset.php:59
+#: src/Form/SiteSettingsFieldset.php:79 src/Form/VerovioFieldset.php:59
 msgid "Select a version…"
 msgstr ""
 
@@ -298,8 +334,8 @@ msgstr ""
 
 #: src/Form/SettingsFieldset.php:31
 msgid ""
-"The property supplying the MEI file via URL, for example \"dcterms:"
-"hasFormat\" or \"dcterms:isFormatOf\"."
+"The property supplying the MEI file via URL, for example "
+"\"dcterms:hasFormat\" or \"dcterms:isFormatOf\"."
 msgstr ""
 
 #: src/Form/SettingsFieldset.php:38
