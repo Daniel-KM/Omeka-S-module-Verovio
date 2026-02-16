@@ -10,6 +10,8 @@ music notation engraving library designed for the Music Encoding Initiative. It
 displays [XML-MEI] and [MusicXML] files attached to items, so the visitor can
 read musical scores and listen them via MIDI.
 
+For an example, see [Gaffurius codices].
+
 
 Installation
 ------------
@@ -21,24 +23,40 @@ The module [Common] must be installed first.
 The module uses an external library [Verovio], so use the release zip to install
 it, or use and init the source.
 
-Furthermore, it is recommended to install the module [XML Viewer] or [Bulk Edit]
-to get the right media types (see below).
+* Composer (recommended, requires Omeka [pull request #2432])
+
+Install the module from the root of Omeka S:
+
+```sh
+composer require daniel-km/omeka-s-module-mirador
+```
+
+The module is automatically downloaded in `composer-addons/modules/` and ready
+to enable in the admin interface.
 
 * From the zip
 
-Download the last release [Verovio.zip] from the list of releases (the master
-does not contain the dependency), and uncompress it in the `modules` directory.
+Download the last release [Verovio.zip] from the list of releases, and
+uncompress it in the `modules` directory. Rename the name of the folder of the
+module to `Verovio`
 
-* From the source and for development:
+* From the source and for development
 
 If the module was installed from the source, rename the name of the folder of
-the module to `Verovio`, and go to the root module, and run:
+the module to `Verovio`, go to the root of the module, and run:
 
 ```sh
 composer install --no-dev
 ```
 
-Then install it like any other Omeka module and follow the config instructions.
+* For test
+
+The module includes a comprehensive test suite with unit and functional tests.
+Run them from the root of Omeka:
+
+```sh
+vendor/bin/phpunit -c modules/Verovio/phpunit.xml --testdox
+```
 
 * About Verovio
 
@@ -50,7 +68,10 @@ last one.
 Usage
 -----
 
-### Identification of xml mei files
+### Identification of xml mei files (for old versions of the module)
+
+This issue is now fixed, because the feature is integrated in module [Common],
+that is required by this module.
 
 Because mei files are xml files, they are not automatically recognized by Omeka.
 To identify them, there are two solutions: use the file extension `.mei` or
@@ -157,11 +178,11 @@ Copyright
 
 [Verovio]:
 
-* Copyright 2014-2025, Swiss RISM Office
+* Copyright 2014-2026, Swiss RISM Office
 
 Module Verovio for Omeka S:
 
-* Copyright Daniel Berthereau, 2019-2025
+* Copyright Daniel Berthereau, 2019-2026
 
 First and next versions of this module was built for [Fachhochschule Nordwestschweiz],
 University of Applied Sciences and Arts, Basel Academy of Music, Academy of Music,
@@ -173,6 +194,8 @@ University of Applied Sciences and Arts, Basel Academy of Music, Academy of Musi
 [XML-MEI]: https://music-encoding.org
 [MusicXML]: https://w3c.github.io/musicxml/
 [Omeka S]: https://omeka.org/s
+[Gaffurius codices]: https://www.gaffurius-codices.ch
+[pull request #2432]: https://github.com/omeka/omeka-s/pull/2432
 [Verovio.zip]: https://gitlab.com/Daniel-KM/Omeka-S-module-Verovio/-/releases
 [XML Viewer]: https://gitlab.com/Daniel-KM/Omeka-S-module-XmlViewer
 [Bulk Edit]: https://gitlab.com/Daniel-KM/Omeka-S-module-BulkEdit
